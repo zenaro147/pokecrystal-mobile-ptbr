@@ -471,8 +471,8 @@ String_17fa49:
 	db   "Error connecting" ; "モバイルセンターの"
 	next "to the" ; "つうしんエラーです"
 	next "Mobile Center." ; "しばらくまって"
-	next "Please try" ; "しばらくまって"
-	next "again later." ; "かけなおして　ください"
+	next "Please try again" ; "しばらくまって"
+	next "later." ; "かけなおして　ください"
 	db   "@" 
 
 String_17fa71:
