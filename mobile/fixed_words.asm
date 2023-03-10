@@ -4014,7 +4014,7 @@ ENDM
 	ezchat_word "WHOAH@@@", $586
 	ezchat_word "WROOAAR!", $5b2
 	ezchat_word "WOW@@@@@", $5ae
-	ezchat_word "GIGGLE@@", $1dc
+	ezchat_word "GIGGLES@", $1dc
 	ezchat_word "SHOCKING", $430
 	ezchat_word "CRIES@@@", $0fe
 	ezchat_word "AGREE@@@", $02a
