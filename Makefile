@@ -162,7 +162,7 @@ endif
 pokecrystal_opt         = -Cjv -t PM_CRYSTAL -i BXTE -n 0 -k 01 -l 0x33 -m 0x10 -r 5 -p 0
 pokecrystal11_opt       = -Cjv -t PM_CRYSTAL -i BXTE -n 1 -k 01 -l 0x33 -m 0x10 -r 5 -p 0
 pokecrystal_au_opt      = -Cjv -t PM_CRYSTAL -i BXTU -n 0 -k 01 -l 0x33 -m 0x10 -r 5 -p 0
-pokecrystal_eu_opt      = -Cjv -t PM_CRYSTAL -i BXTU -n 0 -k 01 -l 0x33 -m 0x10 -r 5 -p 0
+pokecrystal_eu_opt      = -Cjv -t PM_CRYSTAL -i BXTP -n 0 -k 01 -l 0x33 -m 0x10 -r 5 -p 0
 pokecrystal_debug_opt   = -Cjv -t PM_CRYSTAL -i BXTE -n 0 -k 01 -l 0x33 -m 0x10 -r 5 -p 0
 pokecrystal11_debug_opt = -Cjv -t PM_CRYSTAL -i BXTE -n 1 -k 01 -l 0x33 -m 0x10 -r 5 -p 0
 pokecrystal11_vc_opt    = -Cjv -t PM_CRYSTAL -i BXTE -n 1 -k 01 -l 0x33 -m 0x10 -r 5 -p 0
