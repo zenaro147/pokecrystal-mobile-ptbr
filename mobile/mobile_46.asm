@@ -2050,8 +2050,16 @@ ExchangeDownloadURL:
 BattleDownloadURL:
 	db "http://gameboy.datacenter.ne.jp/cgb/download?name=/01/CGB-BXTE/battle/index.txt", 0
 
+if DEF(_CRYSTAL_AU)
+NewsDownloadURL:
+	db "http://gameboy.datacenter.ne.jp/cgb/download?name=/01/CGB-BXTE-AUS/news/index.txt", 0
+elif DEF(_CRYSTAL_EU)	
+NewsDownloadURL:
+	db "http://gameboy.datacenter.ne.jp/cgb/download?name=/01/CGB-BXTE-EUR/news/index.txt", 0
+else
 NewsDownloadURL:
 	db "http://gameboy.datacenter.ne.jp/cgb/download?name=/01/CGB-BXTE/news/index.txt", 0
+endc
 
 StadiumDownloadURL:
 	db "http://gameboy.datacenter.ne.jp/cgb/download?name=/01/CGB-BXTE/POKESTA/menu.cgb", 0
