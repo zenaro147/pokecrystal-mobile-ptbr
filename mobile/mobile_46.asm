@@ -2052,10 +2052,10 @@ BattleDownloadURL:
 
 if DEF(_CRYSTAL_AU)
 NewsDownloadURL:
-	db "http://gameboy.datacenter.ne.jp/cgb/download?name=/01/CGB-BXTE-AUS/news/index.txt", 0
+	db "http://gameboy.datacenter.ne.jp/cgb/download?name=/01/CGB-BXTU/news/index.txt", 0
 elif DEF(_CRYSTAL_EU)	
 NewsDownloadURL:
-	db "http://gameboy.datacenter.ne.jp/cgb/download?name=/01/CGB-BXTE-EUR/news/index.txt", 0
+	db "http://gameboy.datacenter.ne.jp/cgb/download?name=/01/CGB-BXTP/news/index.txt", 0
 else
 NewsDownloadURL:
 	db "http://gameboy.datacenter.ne.jp/cgb/download?name=/01/CGB-BXTE/news/index.txt", 0
