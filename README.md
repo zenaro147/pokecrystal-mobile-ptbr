@@ -69,7 +69,7 @@ https://github.com/gb-mobile/pokecrystal-mobile-en/wiki/Pok%C3%A9mon-Crystal-Mob
 
 ## To-Do
 
-- Make CARD TRADE via IR function. (Appears to be an issue with it using old JP player name length)
+- Make CARD TRADE work via IR function. (Appears to be an issue with it using old JP player name length)
 
 ## Contributors
 
