@@ -69,8 +69,7 @@ https://github.com/gb-mobile/pokecrystal-mobile-en/wiki/Pok%C3%A9mon-Crystal-Mob
 
 ## To-Do
 
-- Make sure NEWS can be downloaded
-- Make sure Battle Tower functionality works.
+- Make CARD TRADE via IR function. (Appears to be an issue with it using old JP player name length)
 
 ## Contributors
 
