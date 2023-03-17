@@ -1324,6 +1324,7 @@ Function100846:
 	ld h, b
 	ld l, c
 	ld de, String_10089f
+	hlcoord 1, 16
 	call PlaceString
 	ret
 
@@ -1332,7 +1333,7 @@ String_10088e:
 	; "じかん@"
 
 String_10089f:
-	db " UNLIMITED@" 		; "　むせいげん@"
+	db "UNLIMITED@" 		; "　むせいげん@"
 
 MobileBattleGetRemainingTime:
 ; Calculates the difference between 10 minutes and sMobileBattleTimer
