@@ -851,13 +851,13 @@ Function89605: ; Right Edge Palette
 	ret
 
 Function8963d:
-	hlcoord 13, 3, wAttrmap
+	hlcoord 12, 3, wAttrmap
 	ld a, 6
 	ld de, SCREEN_WIDTH
 	lb bc, 7, 7
 .loop
 	push hl
-	ld c, 6
+	ld c, 7
 .next
 	ld [hli], a
 	dec c
@@ -1134,7 +1134,7 @@ Function89797:
 	ld a, $11
 	ld [hli], a
 	ld a, $10
-	ld c, $a ; $8
+	ld c, $8
 .asm_897a6
 	ld [hli], a
 	dec c
@@ -1168,7 +1168,7 @@ Function897d5:
 	push bc
 	call Function8934a
 	jr nc, .asm_897f3
-	hlcoord 13, 3, wAttrmap
+	hlcoord 12, 3, wAttrmap
 	xor a
 	ld de, SCREEN_WIDTH
 	lb bc, 7, 7
@@ -1189,7 +1189,7 @@ Function897d5:
 .asm_897f3
 	ld a, $37
 	ldh [hGraphicStartTile], a
-	hlcoord 13, 3
+	hlcoord 12, 3
 	lb bc, 7, 7
 	predef PlaceGraphic
 	call Function8963d
@@ -1273,7 +1273,7 @@ Function8987f: ; creates the card's layout (own card)
 	hlcoord 13, 3
 	call Function89829
 	call Function899b2
-	hlcoord 5, 5
+	hlcoord 5, 6
 	call Function899c9
 	ld bc, wCardPhoneNumber
 	hlcoord 2, 10
@@ -1323,7 +1323,7 @@ Function898dc:
 	ld de, String_89116
 
 .asm_898eb
-	hlcoord 6, 4
+	hlcoord 4, 5 ; 6, 4
 	call PlaceString
 	pop bc
 	ret
@@ -1336,13 +1336,13 @@ Function898f3:
 	ld e, l
 	call Function8934a
 	jr c, .asm_8990a
-	hlcoord 5, 5
+	hlcoord 5, 6
 	lb bc, PRINTNUM_LEADINGZEROS | 2, 5
 	call PrintNum
 	jr .asm_89913
 
 .asm_8990a
-	hlcoord 5, 5
+	hlcoord 5, 6
 	ld de, String_EmptyIDNo
 	call PlaceString
 
@@ -1481,7 +1481,7 @@ Function899b2:
 .asm_899bf
 	ld de, String_89116
 .asm_899c2
-	hlcoord 6, 4
+	hlcoord 4, 5
 	call PlaceString
 	ret
 
@@ -1492,19 +1492,19 @@ Function899c9:
 	ret
 
 Function899d3:
-	hlcoord 1, 4
+	hlcoord 1, 5
 	call Function89753 ; friend icon
-	hlcoord 2, 5
+	hlcoord 2, 6
 	call Function8975b ; "id no" text
 	hlcoord 1, 9
 	call Function89771 ; phone icon
 	hlcoord 1, 11
 	call Function8977a ; "message" text and gfx
-	hlcoord 1, 5
+	hlcoord 1, 6
 	call Function89797 ; arrow gfx
 	hlcoord 2, 4
 	call Function89962 ; "name/" text
-	hlcoord 2, 9
+	hlcoord 2, 9 
 	call Function89915 ; "phone number" text
 	ret
 
