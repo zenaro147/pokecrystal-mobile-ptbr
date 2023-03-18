@@ -67,10 +67,6 @@ Now right click the ‘screen’ on BGB again and select `Load ROM…`, then cho
 A full list of Mobile Adapter features for Pokémon Crystal can be found here:
 https://github.com/gb-mobile/pokecrystal-mobile-en/wiki/Pok%C3%A9mon-Crystal-Mobile-Features
 
-## To-Do
-
-- Make CARD TRADE work via IR function. (Appears to be an issue with it using old JP player name length)
-
 ## Contributors
 
 - Pret           : Initial disassembly
