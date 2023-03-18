@@ -1638,7 +1638,7 @@ DoNameCardSwap:
 	ld hl, .NameCardReceivedCardText
 	call PrintText
 	ld de, wNameCardData
-	farcall Function8ac70
+	farcall Mobile22_SelectCardEntryToOverride
 	ld a, c
 	ld [wTextDecimalByte], a
 	ld hl, .NameCardNotRegisteredCardText
@@ -1734,7 +1734,7 @@ StageDataForNameCard:
 	ld a, BANK(sPlayerData)
 	call OpenSRAM
 	ld hl, sPlayerData + wPlayerName - wPlayerData
-	ld bc, NAME_LENGTH
+	ld bc, PLAYER_NAME_LENGTH
 	call CopyBytes
 	ld hl, sPlayerData + wPlayerID - wPlayerData
 	ld bc, 2

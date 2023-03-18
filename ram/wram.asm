@@ -1075,7 +1075,13 @@ wMysteryGiftTrainer:: ds 1 + (1 + 1 + NUM_MOVES) * PARTY_LENGTH + 1
 wMysteryGiftTrainerEnd::
 
 NEXTU
-wNameCardData:: ds NAME_LENGTH + 2 + 2 + 1 + 8 + 12
+wNameCardData:: 
+wNameCardPlayerName:: ds PLAYER_NAME_LENGTH
+wNameCardPlayerID:: dw
+wNameCardPlayerSecret:: dw
+wNameCardPlayerGender:: db
+wNameCardPhoneNumber:: ds PHONE_NUMBER_LENGTH
+wNameCarEZChatIntroText:: ds EASY_CHAT_MESSAGE_LENGTH
 wNameCardDataEnd::
 
 NEXTU
