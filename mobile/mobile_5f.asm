@@ -4194,6 +4194,12 @@ MobileScript_Zipcode:
 	cp "@"
 	jr z, .display_done
 
+	cp -1
+	jr nz, .no_overflow
+
+	ld a, "0"
+
+.no_overflow
 	ld [hli], a
 	inc de
 	jr .display_loop
