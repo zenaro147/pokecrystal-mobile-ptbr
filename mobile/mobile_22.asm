@@ -1080,6 +1080,11 @@ Function89753:
 	xor a
 	call Function89215
 	ret
+	
+FunctionLine:
+	ld a, $e
+	ld [hl], a
+	ret	
 
 Function8975b:
 	ld a, $1d
@@ -1130,15 +1135,15 @@ Function8977a:
 	ret
 
 Function89797:
-	push bc
-	ld a, $e
-	ld [hl], a
-	ld bc, SCREEN_WIDTH
-	add hl, bc
-	ld a, $11
-	ld [hli], a
-	ld a, $10
-	ld c, $8
+    push bc
+    ld a, $8
+    ld [hl], a
+    ld bc, SCREEN_WIDTH
+    add hl, bc
+    ld a, $11
+    ld [hli], a
+    ld a, $10
+    ld c, $8
 .asm_897a6
 	ld [hli], a
 	dec c
@@ -1496,8 +1501,10 @@ Function899c9:
 	ret
 
 Function899d3:
-	hlcoord 1, 5
+	hlcoord 1, 4
 	call Function89753 ; friend icon
+	hlcoord 1, 5
+	call FunctionLine ; line
 	hlcoord 2, 6
 	call Function8975b ; "id no" text
 	hlcoord 1, 9
