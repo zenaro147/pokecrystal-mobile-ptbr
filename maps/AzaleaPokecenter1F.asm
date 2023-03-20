@@ -20,7 +20,7 @@ AzaleaPokecenter1FGentlemanScript:
 	jumptextfaceplayer AzaleaPokecenter1FGentlemanText
 
 AzaleaPokecenter1FFishingGuruScript:
-	jumptextfaceplayer AzaleaPokecenter1FFishingGuruText
+	jumptextfaceplayer AzaleaPokecenter1FUnusedText
 
 AzaleaPokecenter1FPokefanFScript:
 	jumptextfaceplayer AzaleaPokecenter1FPokefanFText
@@ -36,7 +36,7 @@ AzaleaPokecenter1FGentlemanText:
 	line "fainted."
 	done
 
-AzaleaPokecenter1FUnusedText: ; unreferenced
+AzaleaPokecenter1FUnusedText: 
 	text "This BILL guy"
 	line "created the system"
 
@@ -48,7 +48,7 @@ AzaleaPokecenter1FUnusedText: ; unreferenced
 	cont "#MON per BOX."
 	done
 
-AzaleaPokecenter1FFishingGuruText:
+AzaleaPokecenter1FFishingGuruText: ; Unused, English version replacement for above dialog.
 	text "BILL's PC can"
 	line "store up to 20"
 	cont "#MON per BOX."

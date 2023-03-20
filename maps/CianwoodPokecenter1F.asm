@@ -33,7 +33,12 @@ CianwoodGymGuideScript:
 	end
 
 CianwoodPokecenter1FSuperNerdScript:
-	jumptextfaceplayer CianwoodPokecenter1FSuperNerdText
+	special Mobile_DummyReturnFalse
+	iftrue .mobile
+	jumptextfaceplayer CianwoodPokecenter1FPreMobileText
+	
+.mobile
+	jumptextfaceplayer CianwoodPokecenter1FMobileText
 
 CianwoodPokecenter1FLassText:
 	text "Did you meet the"
@@ -89,7 +94,7 @@ CianwoodGymGuideWinText:
 	cont "looking at you!"
 	done
 
-CianwoodPokecenter1FUnusedText1: ; unreferenced
+CianwoodPokecenter1FPreMobileText: ; unreferenced
 	text "Don't you get the"
 	line "urge to show off"
 
@@ -103,7 +108,7 @@ CianwoodPokecenter1FUnusedText1: ; unreferenced
 	line "in VIOLET."
 	done
 
-CianwoodPokecenter1FUnusedText2: ; unreferenced
+CianwoodPokecenter1FMobileText: ; unreferenced
 	text "I've been battling"
 	line "my pal in VIOLET"
 

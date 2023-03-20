@@ -435,39 +435,39 @@ GoldenrodPokecenter1FGameboyKidScript:
 GoldenrodPokecenter1FLassScript:
 	jumptextfaceplayer GoldenrodPokecenter1FLassText
 
-GoldenrodPokecenter1FPokefanF:
-	faceplayer
-	opentext
-	writetext GoldenrodPokecenter1FPokefanFDoYouHaveEonMailText
-	waitbutton
-	writetext GoldenrodPokecenter1FAskGiveAwayAnEonMailText
-	yesorno
-	iffalse .NoEonMail
-	takeitem EON_MAIL
-	iffalse .NoEonMail
-	writetext GoldenrodPokecenter1FPlayerGaveAwayTheEonMailText
-	waitbutton
-	writetext GoldenrodPokecenter1FPokefanFThisIsForYouText
-	waitbutton
-	verbosegiveitem REVIVE
-	iffalse .NoRoom
-	writetext GoldenrodPokecenter1FPokefanFDaughterWillBeDelightedText
-	waitbutton
-	closetext
-	end
-
-.NoEonMail:
-	writetext GoldenrodPokecenter1FPokefanFTooBadText
-	waitbutton
-	closetext
-	end
-
-.NoRoom:
-	giveitem EON_MAIL
-	writetext GoldenrodPokecenter1FPokefanFAnotherTimeThenText
-	waitbutton
-	closetext
-	end
+;GoldenrodPokecenter1FPokefanF:
+;	faceplayer
+;	opentext
+;	writetext GoldenrodPokecenter1FPokefanFDoYouHaveEonMailText
+;	waitbutton
+;	writetext GoldenrodPokecenter1FAskGiveAwayAnEonMailText
+;	yesorno
+;	iffalse .NoEonMail
+;	takeitem EON_MAIL
+;	iffalse .NoEonMail
+;	writetext GoldenrodPokecenter1FPlayerGaveAwayTheEonMailText
+;	waitbutton
+;	writetext GoldenrodPokecenter1FPokefanFThisIsForYouText
+;	waitbutton
+;	verbosegiveitem REVIVE
+;	iffalse .NoRoom
+;	writetext GoldenrodPokecenter1FPokefanFDaughterWillBeDelightedText
+;	waitbutton
+;	closetext
+;	end
+;
+;.NoEonMail:
+;	writetext GoldenrodPokecenter1FPokefanFTooBadText
+;	waitbutton
+;	closetext
+;	end
+;
+;.NoRoom:
+;	giveitem EON_MAIL
+;	writetext GoldenrodPokecenter1FPokefanFAnotherTimeThenText
+;	waitbutton
+;	closetext
+;	end
 
 GoldenrodPokeCenter1FLinkReceptionistApproachPlayerMovement:
 	step LEFT
@@ -1210,4 +1210,4 @@ GoldenrodPokecenter1F_MapEvents:
 	object_event 19, 14, SPRITE_GRAMPS, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, GoldenrodPokecenter1FGrampsScript, -1
 	 ; 5772C
 	object_event  4, 11, SPRITE_LASS, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 1, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, GoldenrodPokecenter1FLassScript, -1
-	object_event 15, 12, SPRITE_POKEFAN_F, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BROWN, OBJECTTYPE_SCRIPT, 0, GoldenrodPokecenter1FPokefanF, -1
+	;object_event 15, 12, SPRITE_POKEFAN_F, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BROWN, OBJECTTYPE_SCRIPT, 0, GoldenrodPokecenter1FPokefanF, -1
