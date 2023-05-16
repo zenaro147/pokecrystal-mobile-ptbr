@@ -534,7 +534,7 @@ String_17fbfe:
 	next "ended." ; "でんわを　かけなおしてください"
 	next "Please check the" ; "くわしくは　とりあつかい"
 	next "manual and try" ; "せつめいしょを　ごらんください"
-	next "again later"
+	next "again later."
 	db   "@" 
 
 String_17fc3e:
