@@ -5725,7 +5725,7 @@ Function11a63c:
 	ret
 
 String_11a661:
-	db   "Dialing the"
+	db   "Calling the"
 	next "MOBILE CENTER…@"
 
 String_11a679:
