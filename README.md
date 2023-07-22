@@ -30,7 +30,7 @@ https://github.com/Sudel-Matze/pokecrystal
 
 
 
-## Setup [![Build Status][travis-badge]][travis]
+## Setup [![Build Status][ci-badge]][ci]
 
 For more information, please see [INSTALL.md](INSTALL.md)
 
