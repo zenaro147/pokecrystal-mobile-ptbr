@@ -78,6 +78,8 @@ NewGame:
 	jp FinishContinueFunction
 
 AreYouABoyOrAreYouAGirl:
+	call InitSRAMZipcode
+
 	farcall Mobile_AlwaysReturnNotCarry ; mobile
 	jr c, .ok
 	farcall InitGender
@@ -86,6 +88,20 @@ AreYouABoyOrAreYouAGirl:
 .ok
 	ld c, 0
 	farcall InitMobileProfile ; mobile
+	ret
+
+InitSRAMZipcode:
+	ld a, [wSaveFileExists]
+	and a
+	ret nz
+
+	ld a, BANK(sZipcodeCharIndexes)
+	call OpenSRAM
+	xor a
+	ld hl, sZipcodeCharIndexes
+	ld bc, ZIPCODE_MAX_LENGTH
+	call ByteFill
+	call CloseSRAM
 	ret
 
 if DEF(_DEBUG)

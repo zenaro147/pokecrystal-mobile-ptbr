@@ -2019,10 +2019,6 @@ SaveZipcodeWithUniversalFormat:
 	ret
 
 LoadZipcodeWithUniversalFormat:
-	ld a, [wSaveFileExists]
-	and a
-	jr z, .blankZipcode
-
 	ld a, BANK(sZipcodeCharIndexes)
 	call OpenSRAM
 	ld hl, sZipcodeCharIndexes
@@ -2030,11 +2026,4 @@ LoadZipcodeWithUniversalFormat:
 	ld bc, ZIPCODE_MAX_LENGTH
 	call CopyBytes
 	call CloseSRAM
-	ret
-
-.blankZipcode
-	ld hl, wZipCode
-	xor a
-	ld bc, ZIPCODE_MAX_LENGTH
-	call ByteFill
 	ret
