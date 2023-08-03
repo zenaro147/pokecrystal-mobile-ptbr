@@ -3369,7 +3369,7 @@ Jumptable_8a671:
 	dw Function8a679
 	dw Function8a6cd
 	dw Function8a8c3
-	dw Function8a930
+	dw Mobile22_SwapEntries
 
 Function8a679:
 	call Mobile22_ClearScreen
@@ -3690,7 +3690,7 @@ String_8a926:
 	db   "The CARD has";"データ<WO>けしまし<TA!>@"
 	next "been deleted.@"
 
-Function8a930: ; switch entries?
+Mobile22_SwapEntries: ; switch entries.
 	ld a, [wMenuSelection]
 	push af
 	xor a
@@ -3703,17 +3703,17 @@ Function8a930: ; switch entries?
 	call Mobile22_CardListNavigationLoop
 	ld a, [wMenuJoypad]
 	and A_BUTTON
-	jr nz, .asm_8a953
+	jr nz, .apply_swap
 	ld a, c
 	and a
 	jr nz, .asm_8a943
 	pop af
 	ret
-.asm_8a953
+.apply_swap
 	call OpenSRAMBank4
 	pop af
 	cp c
-	jr z, .asm_8a995
+	jr z, .exit
 	push bc
 	ld [wMenuSelection], a
 	call Mobile22_GetSelectedCardFolderEntryInBC
@@ -3721,7 +3721,7 @@ Function8a930: ; switch entries?
 	ld h, b
 	ld l, c
 	ld de, wd002
-	ld bc, $29;$25
+	ld bc, CARD_FOLDER_ENTRY_LENGTH
 	call CopyBytes
 	pop de
 	pop bc
@@ -3731,17 +3731,17 @@ Function8a930: ; switch entries?
 	push bc
 	ld h, b
 	ld l, c
-	ld bc, $29;$25
+	ld bc, CARD_FOLDER_ENTRY_LENGTH
 	call CopyBytes
 	pop de
 	ld hl, wd002
-	ld bc, $29;$25
+	ld bc, CARD_FOLDER_ENTRY_LENGTH
 	call CopyBytes
 	ld de, SFX_SWITCH_POKEMON
 	call WaitPlaySFX
 	ld de, SFX_SWITCH_POKEMON
 	call WaitPlaySFX
-.asm_8a995
+.exit
 	call CloseSRAM
 	ret
 
