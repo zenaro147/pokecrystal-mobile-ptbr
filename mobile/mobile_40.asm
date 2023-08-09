@@ -4733,12 +4733,12 @@ Function1020ea:
 Function102112: ; search entry in card folder matching to opponent?
 	ld a, BANK(sCardFolderData)
 	call OpenSRAM
-	ld hl, sCardFolderData + 8; trainer name of 1st friend in card folder
+	ld hl, sCardFolderData + PLAYER_NAME_LENGTH; trainer name of 1st friend in card folder
 	ld c, NUM_CARD_FOLDER_ENTRIES
 .outer_loop
 	push hl
-	ld de, $c60f + 2
-	ld b, 31
+	ld de, wc608 + 1 + PLAYER_NAME_LENGTH
+	ld b, CARD_FOLDER_ENTRY_LENGTH - PLAYER_NAME_LENGTH
 .inner_loop
 	ld a, [de]
 	cp [hl]
@@ -4803,26 +4803,26 @@ Function102180: ; copy opponent name to string buffer
 Function10218d: ; load opponent's data
 ;	ld hl, w5_dc00
 ;	ld de, wc608
-;	ld bc, $26
+;	ld bc, 1 + CARD_FOLDER_ENTRY_LENGTH
 ;	ld a, $05
 ;	call FarCopyWRAM
 ;	ld de, wc608 + 1 ; useless
 
 	ld hl, w5_dc00
 	ld de, wc608
-	ld bc, PLAYER_NAME_LENGTH + 1
+	ld bc, 1 + PLAYER_NAME_LENGTH
 	ld a, $05
 	call FarCopyWRAM
 	
-	ld hl, w5_dc00 + NAME_LENGTH + 1
-	ld de, wc608 + PLAYER_NAME_LENGTH + 1
+	ld hl, w5_dc00 + 1 + NAME_LENGTH
+	ld de, wc608 + 1 + PLAYER_NAME_LENGTH
 	ld bc, PLAYER_NAME_LENGTH
 	ld a, $05
 	call FarCopyWRAM
 
-	ld hl, w5_dc00 + NAME_LENGTH * 2 + 1
-	ld de, wc608 + PLAYER_NAME_LENGTH * 2 + 1
-	ld bc, $1A
+	ld hl, w5_dc00 + 1 + NAME_LENGTH * 2
+	ld de, wc608 + 1 + PLAYER_NAME_LENGTH * 2
+	ld bc, CARD_FOLDER_ENTRY_LENGTH - PLAYER_NAME_LENGTH * 2
 	ld a, $05
 	call FarCopyWRAM
 
@@ -4841,7 +4841,7 @@ Function10219f:
 Function1021b8:
 	call FadeToMenu
 	call Function10218d
-	ld de, wPlayerMoveStruct + 2 ; wPlayerMoveStruct = wc60f
+	ld de, wc608 + 1 + PLAYER_NAME_LENGTH
 	farcall Mobile22_SelectCardEntryToOverride
 	ld a, c
 	ld [wStringBuffer1], a
