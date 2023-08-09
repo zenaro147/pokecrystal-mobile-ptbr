@@ -91,7 +91,7 @@ Call_045_767b:
 
     ld hl, .Odd;$7712
     ld de, wOddEggOT;$cd1f
-    ld bc, NAME_LENGTH;$0006
+    ld bc, PLAYER_NAME_LENGTH;$0006
     call CopyBytes
     ;ld a, $1f
     ;ld [$cd18], a
@@ -130,9 +130,13 @@ Call_045_767b:
     dec a
     jr nz, .jr_045_7702
 
+; REMARK:
+; the following code overwrites the odd egg's ot's last 2 non-terminator characters with terminators in order to prevent the code at 46:BattleTowerAction_EggTicket from deleting a second egg ticket
+def Odd_NUM_CHARS equ 3 ; "ODD"
+rept Odd_NUM_CHARS / 2
     inc hl
-    inc hl
-    ld a, $50
+endr
+    ld a, "@"
     ld [hl+], a
     ld [hl], a
 
@@ -142,7 +146,8 @@ Call_045_767b:
     ret
 
 .Odd:
-	db "ODD@@@@@@@@@"
+; localization: mind above remark
+	db "ODD@@@@@"
 
 
 Function11765d:
