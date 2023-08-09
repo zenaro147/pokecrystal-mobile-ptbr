@@ -136,13 +136,11 @@ sHallOfFameEnd::
 
 SECTION "SRAM Crystal Data", SRAM
 
-;sMobileEventIndex:: db
-	ds 1
+sMobileEventIndex:: db
 
 sCrystalData:: ds wCrystalDataEnd - wCrystalData
 
-;sMobileEventIndexBackup:: db
-	ds 1
+sMobileEventIndexBackup:: db
 
 
 SECTION "SRAM Battle Tower", SRAM
@@ -224,7 +222,7 @@ s4_b000:: ds 1
 
 SECTION "SRAM Mobile 2", SRAM
 
-sMobileEventIndex:: db ; JP: location of sMobileEventIndex
+sMobileEventIndexJP:: db ; JP: location of sMobileEventIndex
 
 sTrainerRankings::
 sTrainerRankingGameTimeHOF:: ds 4
@@ -272,7 +270,7 @@ sTrainerRankingBugContestScore:: ds 2
 sTrainerRankingsChecksum:: ds 2
 sTrainerRankingsEnd::
 
-sMobileEventIndexBackup:: db ; JP: location of sMobileEventIndexBackup
+sMobileEventIndexBackupJP:: db ; JP: location of sMobileEventIndexBackup
 
 sTrainerRankingsBackup:: ds sTrainerRankingsEnd - sTrainerRankings
 

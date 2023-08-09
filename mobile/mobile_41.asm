@@ -513,22 +513,22 @@ CalculateTrainerRankingsChecksum:
 	ret
 
 BackupMobileEventIndex:
-;	ld a, BANK(sMobileEventIndex)
-;	call GetSRAMBank
-;	ld a, [sMobileEventIndex]
-;	push af
-;	ld a, BANK(sMobileEventIndexBackup)
-;	call GetSRAMBank
-;	pop af
-;	ld [sMobileEventIndexBackup], a
-;	call CloseSRAM
-;	ret
-
 	ld a, BANK(sMobileEventIndex)
 	call OpenSRAM
-	ld hl, sMobileEventIndex
-	ld de, sMobileEventIndexBackup
-	ld bc, $83
+	ld a, [sMobileEventIndex]
+	push af
+	ld a, BANK(sMobileEventIndexBackup)
+	call OpenSRAM
+	pop af
+	ld [sMobileEventIndexBackup], a
+	call CloseSRAM
+;	ret
+
+	ld a, BANK(sTrainerRankings)
+	call OpenSRAM
+	ld hl, sTrainerRankings
+	ld de, sTrainerRankingsBackup
+	ld bc, sTrainerRankingsEnd - sTrainerRankings
 	call CopyBytes
 	call VerifyTrainerRankingsChecksum
 	call nz, InitializeTrainerRankings
@@ -536,22 +536,22 @@ BackupMobileEventIndex:
 	ret
 
 RestoreMobileEventIndex:
-;	ld a, BANK(sMobileEventIndexBackup)
-;	call GetSRAMBank
-;	ld a, [sMobileEventIndexBackup]
-;	push af
-;	ld a, BANK(sMobileEventIndex)
-;	call GetSRAMBank
-;	pop af
-;	ld [sMobileEventIndex], a
-;	call CloseSRAM
-;	ret
-
 	ld a, BANK(sMobileEventIndexBackup)
 	call OpenSRAM
-	ld hl, sMobileEventIndexBackup
-	ld de, sMobileEventIndex
-	ld bc, $83
+	ld a, [sMobileEventIndexBackup]
+	push af
+	ld a, BANK(sMobileEventIndex)
+	call OpenSRAM
+	pop af
+	ld [sMobileEventIndex], a
+	call CloseSRAM
+;	ret
+
+	ld a, BANK(sTrainerRankingsBackup)
+	call OpenSRAM
+	ld hl, sTrainerRankingsBackup
+	ld de, sTrainerRankings
+	ld bc, sTrainerRankingsEnd - sTrainerRankings
 	call CopyBytes
 	call VerifyTrainerRankingsChecksum
 	call nz, InitializeTrainerRankings
@@ -570,17 +570,17 @@ VerifyTrainerRankingsChecksum:
 	ret
 
 DeleteMobileEventIndex: ; after Call_041_6208 in jp
-;	ld a, BANK(sMobileEventIndex)
-;	call GetSRAMBank
-;	xor a
-;	ld [sMobileEventIndex], a
-;	call CloseSRAM
-;	ret
-
 	ld a, BANK(sMobileEventIndex)
 	call OpenSRAM
-	ld hl, sMobileEventIndex
-	ld bc, $0083
+	xor a
+	ld [sMobileEventIndex], a
+	call CloseSRAM
+;	ret
+
+	ld a, BANK(sTrainerRankings)
+	call OpenSRAM
+	ld hl, sTrainerRankings
+	ld bc, sTrainerRankingsEnd - sTrainerRankings
 	xor a
 	call ByteFill
 	ld hl, sTrainerRankingShortestMagikarp
