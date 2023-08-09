@@ -163,17 +163,17 @@ SECTION "SRAM Battle Tower", SRAM
 	ds 2
 
 
-sBTMonOfTrainers::
+;sBTMonOfTrainers:: ; obsolete now
 ; team of previous trainer
 ; sBTMonPrevTrainer1 - sBTMonPrevTrainer3
-for n, 1, BATTLETOWER_PARTY_LENGTH + 1
-sBTMonPrevTrainer{d:n}:: db
-endr
+;for n, 1, BATTLETOWER_PARTY_LENGTH + 1
+;sBTMonPrevTrainer{d:n}:: db
+;endr
 ; team of preprevious trainer
 ; sBTMonPrevPrevTrainer1 - sBTMonPrevPrevTrainer3
-for n, 1, BATTLETOWER_PARTY_LENGTH + 1
-sBTMonPrevPrevTrainer{d:n}:: db
-endr
+;for n, 1, BATTLETOWER_PARTY_LENGTH + 1
+;sBTMonPrevPrevTrainer{d:n}:: db
+;endr
 
 
 ; The PC boxes will not fit into one SRAM bank,
