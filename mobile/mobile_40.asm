@@ -1051,7 +1051,7 @@ String1006c2:
 String1006c6:
 	db " sec.@"			; "びょう@" Second
 String1006ca:
-	db "1 hour+ @" 		; "１じかんいじょう@" More than 1 hour
+	db "1 hour or more@" 		; "１じかんいじょう@" More than 1 hour
 
 Function1006d3:
 	call UpdateTime
