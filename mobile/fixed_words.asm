@@ -407,9 +407,9 @@ Function11c1b9:
 
 Function11c254:
 	push af
-	ld a, BANK(sEZChatIntroductionMessage)
+	ld a, BANK(sEZChatMessages)
 	call OpenSRAM
-	ld hl, sEZChatIntroductionMessage
+	ld hl, sEZChatMessages
 	pop af
 ; a * 4 * 2
 	sla a
@@ -419,7 +419,7 @@ Function11c254:
 	ld b, 0
 	add hl, bc
 	ld de, wEZChatWords
-	ld bc, EZCHAT_WORD_COUNT * 2
+	ld bc, EASY_CHAT_MESSAGE_LENGTH
 	call CopyBytes
 	call CloseSRAM
 	ret
@@ -528,8 +528,8 @@ EZChat_MasterLoop:
 	depixel 3, 1, 2, 5
 	ld a, SPRITE_ANIM_INDEX_EZCHAT_CURSOR
 	call InitSpriteAnimStruct
-	depixel 8, 1, 2, 5
 
+	depixel 8, 1, 2, 5
 	ld a, SPRITE_ANIM_INDEX_EZCHAT_CURSOR
 	call InitSpriteAnimStruct
 	ld hl, SPRITEANIMSTRUCT_VAR1
@@ -2242,9 +2242,9 @@ EZChatMenu_MessageTypeMenu: ; Message Type Menu Controls (Intro/Battle Start/Win
 	ld a, [hl]
 	and a
 	jr nz, .clicksound
-	ld a, BANK(sEZChatIntroductionMessage)
+	ld a, BANK(sEZChatMessages)
 	call OpenSRAM
-	ld hl, sEZChatIntroductionMessage
+	ld hl, sEZChatMessages
 	ld a, [wMenuCursorY]
 	dec a
 	sla a
@@ -2254,7 +2254,7 @@ EZChatMenu_MessageTypeMenu: ; Message Type Menu Controls (Intro/Battle Start/Win
 	ld b, 0
 	add hl, bc
 	ld de, wEZChatWords
-	ld c, EZCHAT_WORD_COUNT * 2
+	ld c, EASY_CHAT_MESSAGE_LENGTH
 .save_message
 	ld a, [de]
 	ld [hli], a
@@ -3144,12 +3144,12 @@ AnimateEZChatCursor: ; EZChat cursor drawing code, extends all the way down to r
 	ret
 
 .nine
-	ld d, -13 * 8
+	ld d, -13 * TILE_WIDTH
 	ld a, SPRITE_ANIM_FRAMESET_EZCHAT_CURSOR_7 ; $2c
 	jr .eight_nine_load
 
 .eight
-	ld d, 2 * 8
+	ld d, 2 * TILE_WIDTH
 	ld a, SPRITE_ANIM_FRAMESET_EZCHAT_CURSOR_6 ; $2b
 .eight_nine_load
 	push de
@@ -3161,7 +3161,7 @@ AnimateEZChatCursor: ; EZChat cursor drawing code, extends all the way down to r
 	ld e, a
 	sla a
 	add e
-	add 8 * 8
+	add 8 * TILE_WIDTH
 	ld hl, SPRITEANIMSTRUCT_YCOORD
 	add hl, bc
 	ld [hld], a
