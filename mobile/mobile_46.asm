@@ -6392,7 +6392,7 @@ Function11ad95:
 	ld de, String_11ae40
 	call PlaceString
 	hlcoord 8, 10, wAttrmap ;10, 10, wAttrmap
-	lb bc, 8, 10 ;8
+	lb bc, 8, 9 ;8
 	call Function11afd6
 	farcall ReloadMapPart
 	call MobileIncJumptableIndex
@@ -6478,7 +6478,7 @@ Function11adc4:
 
 MenuHeader_11ae38:
 	db MENU_BACKUP_TILES ; flags
-	menu_coords  8, 10, 17, SCREEN_HEIGHT - 1
+	menu_coords  8, 10, 16, SCREEN_HEIGHT - 1
 	dw NULL
 	db 0 ; default option
 
