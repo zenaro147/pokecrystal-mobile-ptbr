@@ -6498,11 +6498,11 @@ Function11ae4e:
 	ld hl, MenuHeader_11b013
 	call LoadMenuHeader
 	call MenuBox
-	hlcoord 17, 8
+	hlcoord 16, 8
 	ld de, String_11b01b
 	call PlaceString
-	hlcoord 15, 7, wAttrmap
-	lb bc, 5, 8
+	hlcoord 14, 7, wAttrmap
+	lb bc, 5, 6
 	call Function11afd6
 	hlcoord 7, 12, wAttrmap ;9, 12, wAttrmap
 	lb bc, 6, 13 ;11
@@ -6588,11 +6588,11 @@ Function11af04:
 	ld hl, MenuHeader_11b013
 	call LoadMenuHeader
 	call MenuBox
-	hlcoord 17, 8
+	hlcoord 16, 8
 	ld de, String_11b01b
 	call PlaceString
-	hlcoord 15, 7, wAttrmap
-	lb bc, 5, 8
+	hlcoord 14, 7, wAttrmap
+	lb bc, 5, 6
 	call Function11afd6
 	hlcoord 7, 12, wAttrmap ;9, 12, wAttrmap
 	lb bc, 6, 13 ;11
