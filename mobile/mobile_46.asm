@@ -6780,7 +6780,7 @@ Function11b03d:
 	jr nz, .got_string
 	ld hl, .MaleString
 .got_string
-	ld bc, 3 ; string length
+	ld bc, 2 ; string length
 	jp CopyBytes
 
 .MaleString: db "♂@"
