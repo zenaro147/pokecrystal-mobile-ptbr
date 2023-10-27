@@ -68,7 +68,7 @@ MainMenu:
 	db "CONTINUAR@"
 	db "NOVO JOGO@"
 	db "OPÇÕES@"
-	db "PRESENTE SECRETO@"
+	db "BRINDE SECRETO@"
 	db "MOBILE@"
 	db "MOBILE STADIUM@"
 if DEF(_DEBUG)
