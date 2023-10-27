@@ -52,18 +52,21 @@ fi
 
 # Get RGBDS-0.6.1
 if [ -d "rgbds" ]; then
-  echo "rgbds already exists! Removing..."
-  sudo rm -R rgbds
+  #echo "rgbds already exists! Removing..."
+  #sudo rm -R rgbds
+  echo "rgbds already exists! Skipping..."
+else
+  echo "Getting the latest RGBDS compatible version!"
+  curl -Lo rgbds-0.6.1.tar.gz https://github.com/gbdev/rgbds/releases/download/v0.6.1/rgbds-0.6.1.tar.gz
+  tar xvfz rgbds-0.6.1.tar.gz
+  rm rgbds-0.6.1.tar.gz
+  echo "Building rgbds..."
+  cd rgbds
+  make clean
+  make
+  cd ..
 fi
-echo "Getting the latest RGBDS compatible version!"
-curl -Lo rgbds-0.6.1.tar.gz https://github.com/gbdev/rgbds/releases/download/v0.6.1/rgbds-0.6.1.tar.gz
-tar xvfz rgbds-0.6.1.tar.gz
-rm rgbds-0.6.1.tar.gz
-echo "Building rgbds..."
-cd rgbds
-make clean
-make
-cd ..
+
 
 # Build the Rom
 echo "Building pokecrystal..."
