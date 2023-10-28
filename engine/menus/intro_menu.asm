@@ -549,10 +549,10 @@ Continue_LoadMenuHeader:
 .MenuData_Dex:
 	db 0 ; flags
 	db 4 ; items
-	db "PLAYER@"
-	db "BADGES@"
+	db "PESSOA@"
+	db "INSÍGNIAS@"
 	db "#DEX@"
-	db "TIME@"
+	db "TEMPO@"
 
 .MenuHeader_NoDex:
 	db MENU_BACKUP_TILES ; flags
@@ -563,10 +563,10 @@ Continue_LoadMenuHeader:
 .MenuData_NoDex:
 	db 0 ; flags
 	db 4 ; items
-	db "PLAYER <PLAYER>@"
-	db "BADGES@"
+	db "PESSOA <PLAYER>@"
+	db "INSÍGNIAS@"
 	db " @"
-	db "TIME@"
+	db "TEMPO@"
 
 Continue_DisplayBadgesDexPlayerName:
 	call MenuBoxCoord2Tile

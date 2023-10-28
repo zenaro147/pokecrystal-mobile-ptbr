@@ -2044,60 +2044,20 @@ Function118b9a:
 pushc
 setcharmap ascii
 
-if DEF(_CRYSTAL_AU)
-ExchangeDownloadURL:
-	db "http://gameboy.datacenter.ne.jp/cgb/download?name=/01/CGB-BXTU/exchange/index.txt", 0
-elif DEF(_CRYSTAL_EU)
-ExchangeDownloadURL:
-	db "http://gameboy.datacenter.ne.jp/cgb/download?name=/01/CGB-BXTP/exchange/index.txt", 0
-else
 ExchangeDownloadURL:
 	db "http://gameboy.datacenter.ne.jp/cgb/download?name=/01/CGB-BXTE/exchange/index.txt", 0
-endc
 	
-if DEF(_CRYSTAL_AU)
-BattleDownloadURL:
-	db "http://gameboy.datacenter.ne.jp/cgb/download?name=/01/CGB-BXTU/battle/index.txt", 0
-elif DEF(_CRYSTAL_EU)
-BattleDownloadURL:
-	db "http://gameboy.datacenter.ne.jp/cgb/download?name=/01/CGB-BXTP/battle/index.txt", 0
-else
 BattleDownloadURL:
 	db "http://gameboy.datacenter.ne.jp/cgb/download?name=/01/CGB-BXTE/battle/index.txt", 0
-endc
 
-if DEF(_CRYSTAL_AU)
-NewsDownloadURL:
-	db "http://gameboy.datacenter.ne.jp/cgb/download?name=/01/CGB-BXTU/news/index.txt", 0
-elif DEF(_CRYSTAL_EU)	
-NewsDownloadURL:
-	db "http://gameboy.datacenter.ne.jp/cgb/download?name=/01/CGB-BXTP/news/index.txt", 0
-else
 NewsDownloadURL:
 	db "http://gameboy.datacenter.ne.jp/cgb/download?name=/01/CGB-BXTE/news/index.txt", 0
-endc
 
-if DEF(_CRYSTAL_AU)
-StadiumDownloadURL:
-	db "http://gameboy.datacenter.ne.jp/cgb/download?name=/01/CGB-BXTU/POKESTA/menu.cgb", 0
-elif DEF(_CRYSTAL_EU)	
-StadiumDownloadURL:
-	db "http://gameboy.datacenter.ne.jp/cgb/download?name=/01/CGB-BXTP/POKESTA/menu.cgb", 0
-else
 StadiumDownloadURL:
 	db "http://gameboy.datacenter.ne.jp/cgb/download?name=/01/CGB-BXTE/POKESTA/menu.cgb", 0
-endc
 
-if DEF(_CRYSTAL_AU)
-OddEggDownloadURL:
-	db "http://gameboy.datacenter.ne.jp/cgb/download?name=/01/CGB-BXTU/tamago/index.txt", 0
-elif DEF(_CRYSTAL_EU)	
-OddEggDownloadURL:
-	db "http://gameboy.datacenter.ne.jp/cgb/download?name=/01/CGB-BXTP/tamago/index.txt", 0
-else
 OddEggDownloadURL:
 	db "http://gameboy.datacenter.ne.jp/cgb/download?name=/01/CGB-BXTE/tamago/index.txt", 0
-endc	
 
 popc
 
@@ -4131,16 +4091,8 @@ Function119ac9:
 	ld [wBattleTowerRoomMenuJumptableIndex], a
 	ret
 	
-if DEF(_CRYSTAL_AU)
-XGameCode:
-INCBIN "data/mobile/x-game-code-aus.txt"
-elif DEF(_CRYSTAL_EU)
-XGameCode:
-INCBIN "data/mobile/x-game-code-eur.txt"
-else
 XGameCode:
 INCBIN "data/mobile/x-game-code.txt"
-endc
 
 XGameResult:
 INCBIN "data/mobile/x-game-result.txt"

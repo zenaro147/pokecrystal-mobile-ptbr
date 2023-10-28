@@ -1,4 +1,5 @@
 #!/bin/bash
+clear 
 
 # Install necessary tools
 dpkg -s bison  &> /dev/null

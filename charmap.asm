@@ -182,6 +182,7 @@
 	charmap "ó",         $cc
 	charmap "ù",         $cd
 	charmap "ú",         $ce
+	charmap "ê",         $cf
 
 	charmap "'d",        $d0
 	charmap "'l",        $d1

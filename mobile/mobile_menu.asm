@@ -112,8 +112,8 @@ MobileString1:
 MobileStrings2:
 ; string 0
 String_0x49fe9:
-	db   "Cria e armazena"
-	next "CARTÕES numa pasta.@"
+	db   "Cria e salva CAR-"
+	next "TÕES numa pasta.@"
 
 String_0x4a004:
 	db   "Cria um CARTÃO e";"モバイルたいせんや　じぶんのめいしで"
@@ -765,16 +765,16 @@ Function4a5b0:
 String_4a5c5:
 	db "Introdução@";"じこしょうかい@"
 String_4a5cd:
-	db "Início Batalha@";"たいせん　<GA>はじまるとき@"
+	db "Ao Iniciar@";"たいせん　<GA>はじまるとき@"
 String_4a5da:
-	db "Vencer Batalha@";"たいせん　<NI>かったとき@"
+	db "Ao Vencer@";"たいせん　<NI>かったとき@"
 String_4a5e6:
-	db "Perder Batalha@";"たいせん　<NI>まけたとき@"
+	db "Ao Perder@";"たいせん　<NI>まけたとき@"
 String_4a5f2:
 	db "Cancelar@";"もどる@"
 
 Strings_4a5f6:
-	db "Exibe no CARTÃO@";"めいし　や　ニュース　<NI>のせる@"
+	db "Exibido no CARTÃO@";"めいし　や　ニュース　<NI>のせる@"
 	db "e nas NOTÍCIAS.@";"あなた<NO>あいさつです@"
 	db "Exibido no início@";"モバイル　たいせん<GA>はじまるとき@"
 	db "da luta mobile.@";"あいて<NI>みえる　あいさつです@"

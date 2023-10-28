@@ -5,15 +5,15 @@ String_EmptyIDNo:
 	db "-----@"
 
 String_8911c:
-	db   "Please enter a";"でんわばんごうが　ただしく" ; Phone number is not
-	next "phone number.@";"はいって　いません！@"   ; entered correctly!
+	db   "Insira um número";"でんわばんごうが　ただしく" ; Phone number is not
+	next "de telefone.@";"はいって　いません！@"   ; entered correctly!
 
 String_89135:
-	db   "Discard changes to";"データが　かわって　いますが"  ; The data has changed.
-	next "this CARD?@";"かきかえないで　やめますか？@" ; Quit anyway?
+	db   "Deseja descartar";"データが　かわって　いますが"  ; The data has changed.
+	next "as alterações?@";"かきかえないで　やめますか？@" ; Quit anyway?
 
 String_89153:
-	db   "No message.@";"メッセージは　ありません@"    ; No message
+	db   "Sem mensagem.@";"メッセージは　ありません@"    ; No message
 
 OpenSRAMBank4:
 	push af
@@ -270,8 +270,8 @@ MenuHeader_YesNo:
 MenuData_YesNo:
 	db STATICMENU_CURSOR | STATICMENU_NO_TOP_SPACING ; flags
 	db 2 ; items
-	db "YES@"
-	db "NO@"
+	db "SIM@"
+	db "NÃO@"
 
 Mobile22_DeleteSelectedCard:
 	call Mobile22_GetSelectedCardFolderEntryInBC
@@ -1485,7 +1485,7 @@ Function8999c:
 	ret
 
 String_899ac:
-	db "'S CARD@";"の　めいし@"
+	db " CARTÃO@";"の　めいし@"
 
 Function899b2:
 	ld bc, wPlayerName
@@ -1574,10 +1574,10 @@ Function89a2e:
 	ret
 
 String_89a4e:
-	db "SAVE@";"けってい@"
+	db "SALVAR@";"けってい@"
 
 String_89a53:
-	db "CANCEL@";"やめる@"
+	db "CANCELAR@";"やめる@"
 
 Function89a57:
 	call JoyTextDelay_ForcehJoyDown ; joypad
@@ -2730,9 +2730,9 @@ MenuHeader_0x8a176:
 	menu_coords 11, 0, SCREEN_WIDTH - 1, 6
 
 Function8a17b:
-	decoord 11, 0
+	decoord 10, 0
 	ld b, $5
-	ld c, $7
+	ld c, $8
 	call SetBGAndDisplayBlankGoldenBox_DE
 	ld hl, MenuHeader_0x8a19a
 	ld a, [wd030]
@@ -2747,16 +2747,16 @@ Function8a17b:
 
 MenuHeader_0x8a19a:
 	db MENU_BACKUP_TILES ; flags
-	menu_coords 11, 0, SCREEN_WIDTH - 1, 6
+	menu_coords 10, 0, SCREEN_WIDTH - 1, 6
 	dw MenuData_0x8a1a2
 	db 1 ; default option
 
 MenuData_0x8a1a2:
 	db STATICMENU_CURSOR | STATICMENU_NO_TOP_SPACING | STATICMENU_WRAP ; flags
 	db 3 ; items
-	db "Open@" ; "ひらく@"
-	db "Delete@" ; "すてる@"
-	db "Cancel@" ; "もどる@"
+	db "Abrir@" ; "ひらく@"
+	db "Deletar@" ; "すてる@"
+	db "Sair@" ; "もどる@"
 
 Function8a1b0:
 	hlcoord 0, 12
@@ -2773,16 +2773,16 @@ Function8a1b0:
 	ret
 
 Strings_8a1cc:
-	db   "Open the" ;"めいし<NO>せいりと　へんしゅうを"
-	next "CARD FOLDER." ;"おこないます"
+	db   "Abrir a pasta" ;"めいし<NO>せいりと　へんしゅうを"
+	next "de CARTÕES." ;"おこないます"
 	db   "@"
 
-	db   "Delete the" ;"めいしフォルダー<NO>めいしと"
-	next "CARD FOLDER." ;"あんしょうばんごう<WO>けします"
+	db   "Deletar a pasta" ;"めいしフォルダー<NO>めいしと"
+	next "de CARTÕES." ;"あんしょうばんごう<WO>けします"
 	db   "@"
 
-	db   "Return to the";"まえ<NO>がめん<NI>もどります@"
-	next "previous screen.@"
+	db   "Voltar para a";"まえ<NO>がめん<NI>もどります@"
+	next "página anterior.@"
 	db   "@"
 
 Function8a20d:
@@ -3056,10 +3056,10 @@ MenuHeader_CardFolderLayout:
 MenuData_0x8a417:
 	db STATICMENU_CURSOR | STATICMENU_WRAP ; flags
 	db 4 ; items
-	db "Cards@" ;"めいしりスト@"
-	db "My Card@" ;"じぶんの　めいし@"
-	db "Trade@" ;"めいしこうかん@"
-	db "Cancel@" ;"やめる@"
+	db "Cartões@" ;"めいしりスト@"
+	db "Meu Cartão@" ;"じぶんの　めいし@"
+	db "Trocar@" ;"めいしこうかん@"
+	db "Cancelar@" ;"やめる@"
 
 MenuHeader_0x8a435:
 	db MENU_BACKUP_TILES ; flags
@@ -3070,9 +3070,9 @@ MenuHeader_0x8a435:
 MenuData_0x8a43d:
 	db STATICMENU_CURSOR | STATICMENU_WRAP ; flags
 	db 3 ; items
-	db "Cards@" ;"めいしりスト@"
-	db "My Card@" ;"じぶんの　めいし@"
-	db "Cancel@" ;"やめる@"
+	db "Cartões@" ;"めいしりスト@"
+	db "Meu Cartão@" ;"じぶんの　めいし@"
+	db "Cancelar@" ;"やめる@"
 
 Function8a453:
 	hlcoord 0, 12
@@ -3093,18 +3093,18 @@ Function8a453:
 	ret
 
 String_8a476:
-	db   "Return to the";"まえ<NO>がめん<NI>もどります@"
-	next "previous screen.@"
+	db   "Voltar para a";"まえ<NO>がめん<NI>もどります@"
+	next "tela anterior.@"
 
 Strings_8a483:
-	db   "Friends' CARDS";"おともだち<NO>めいしは"
-	next "are stored here.@";"ここ<NI>いれておきます@"
+	db   "CARTÕES de amigos";"おともだち<NO>めいしは"
+	next "são salvos aqui.@";"ここ<NI>いれておきます@"
 
-	db   "Enter your number";"でんわばんごう<WO>いれると"
-	next "to trade CARDS.@";"めいしこうかん<GA>できます@"
+	db   "Insira o número p/";"でんわばんごう<WO>いれると"
+	next "trocar CARTÕES.@";"めいしこうかん<GA>できます@"
 
-	db   "Trade CARDS with";"ともだちと　じぶん<NO>めいしを"
-	next "friends via IR.@";"せきがいせんで　こうかん　します@"
+	db   "Trocar CARTÕES com";"ともだちと　じぶん<NO>めいしを"
+	next "amigos pelo IR.@";"せきがいせんで　こうかん　します@"
 
 Function8a4d3:
 	ld a, [wMenuSelection]
@@ -3622,8 +3622,8 @@ Function8a818:
 	ret
 
 .string_8a868
-	db   "The CARD was";"めいし<WO>かきかえ　まし<TA!>@"
-	next "updated.@"
+	db   "O CARTÃO foi";"めいし<WO>かきかえ　まし<TA!>@"
+	next "atualizado.@"
 
 .asm_8a875
 	ld de, String_8a88b
@@ -3639,8 +3639,8 @@ Function8a818:
 	ret
 
 String_8a88b:
-	db   "Please enter a";"おともだち<NO>なまえが"
-	next "name.@";"かかれて　いません！@"
+	db   "Insira um nome.@";"おともだち<NO>なまえが"
+	;next "name.@";"かかれて　いません！@"
 
 Function8a8a1:
 	call OpenSRAMBank4
@@ -3695,11 +3695,11 @@ Function8a8c3:
 	ret
 
 String_8a919:
-	db "Delete this CARD?@";"このデータ<WO>けしますか？@"	
+	db "Deletar CARTÃO?@";"このデータ<WO>けしますか？@"	
 
 String_8a926:
-	db   "The CARD has";"データ<WO>けしまし<TA!>@"
-	next "been deleted.@"
+	db   "O CARTÃO foi";"データ<WO>けしまし<TA!>@"
+	next "apagado.@"
 
 Mobile22_SwapEntries: ; switch entries.
 	ld a, [wMenuSelection]
@@ -3821,9 +3821,9 @@ MenuHeader_0x8a9f2:
 MenuData_0x8a9fa:
 	db STATICMENU_CURSOR | STATICMENU_WRAP ; flags
 	db 3 ; items
-	db "Edit@"
-	db "View@"
-	db "Quit@"
+	db "Editar@"
+	db "Ver@"
+	db "Sair@"
 
 Function8aa09:
 	ret
@@ -3935,8 +3935,8 @@ Function8aab6:
 	ret
 
 String_8aaf0:
-	db 	 "Your CARD was";"あたらしい　めいし<PKMN>できまし<LF>@"
-	next "updated.@"
+	db 	 "Seu CARTÃO foi";"あたらしい　めいし<PKMN>できまし<LF>@"
+	next "atualizado.@"
 
 Function8ab00:
 	ld de, String_8911c
@@ -4089,8 +4089,8 @@ Function8aba9: ; pick a friend to call
 	ret
 
 String_8ac3b:
-	db   "Call this";"こ<NO>ともだち<NI>でんわを"
-	next "friend?@";"かけますか？@"
+	db   "Ligar para esse";"こ<NO>ともだち<NI>でんわを"
+	next "amigo?@";"かけますか？@"
 
 Function8ac4e:
 	xor a
@@ -4270,12 +4270,12 @@ Mobile22_AskOverwriteCardEntry:
 	ret
 
 String_AskOverwriteCard:
-	db   "Overwrite";"こ<NO>めいし<WO>けして"
-	next "this data?@";"いれかえますか？@"
+	db   "Substituir as";"こ<NO>めいし<WO>けして"
+	next "informações?@";"いれかえますか？@"
 
 String_KeepFriendsName:
-	db   "Keep the";"おともだち<NO>なまえを"
-	next "friend's name?@";"のこして　おきますか？@"
+	db   "Deseja manter esse";"おともだち<NO>なまえを"
+	next "nome do amigo?@";"のこして　おきますか？@"
 
 Function8adb3:
 	call Mobile22_ClearScreen
