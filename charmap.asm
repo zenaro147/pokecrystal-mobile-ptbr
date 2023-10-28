@@ -37,6 +37,14 @@
 	charmap "<DEXEND>",  $5f
 
 ; Actual characters (from gfx/font/font_extra.png)
+	charmap "``",         $d7
+	charmap "^^",         $d8
+	charmap "~~",         $d9
+	charmap "´´",         $da
+	charmap "`",         $db
+	charmap "^",         $dc
+	charmap "~",         $dd
+	charmap "´",         $de
 
 	charmap "<BOLD_A>",  $60 ; unused
 	charmap "<BOLD_B>",  $61 ; unused
