@@ -2730,9 +2730,9 @@ MenuHeader_0x8a176:
 	menu_coords 11, 0, SCREEN_WIDTH - 1, 6
 
 Function8a17b:
-	decoord 10, 0
+	decoord 11, 0
 	ld b, $5
-	ld c, $8
+	ld c, $7
 	call SetBGAndDisplayBlankGoldenBox_DE
 	ld hl, MenuHeader_0x8a19a
 	ld a, [wd030]
@@ -2755,7 +2755,7 @@ MenuData_0x8a1a2:
 	db STATICMENU_CURSOR | STATICMENU_NO_TOP_SPACING | STATICMENU_WRAP ; flags
 	db 3 ; items
 	db "Abrir@" ; "ひらく@"
-	db "Deletar@" ; "すてる@"
+	db "Apagar@" ; "すてる@"
 	db "Sair@" ; "もどる@"
 
 Function8a1b0:
