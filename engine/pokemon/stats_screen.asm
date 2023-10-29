@@ -215,7 +215,7 @@ if DEF(_DEBUG)
 	ld a, 127
 	ld [wStepCount], a
 	ld de, .HatchSoonString
-	hlcoord 8, 17
+	hlcoord 2, 17
 	call PlaceString
 	ld hl, wStatsScreenFlags
 	set 5, [hl]
@@ -227,7 +227,7 @@ if DEF(_DEBUG)
 	jp StatsScreen_JoypadAction
 
 .HatchSoonString:
-	db "▶HATCH SOON!@"
+	db "▶CHOCA EM BREVE!@"
 endc
 
 StatsScreen_LoadPage:
@@ -598,7 +598,7 @@ LoadPinkPage:
 	ld a, [wMonType]
 	cp BOXMON
 	jr z, .StatusOK
-	hlcoord 6, 13
+	hlcoord 5, 13
 	push hl
 	ld de, wTempMonStatus
 	predef PlaceStatusString
@@ -643,7 +643,7 @@ LoadPinkPage:
 	hlcoord 10, 12
 	call PlaceString
 	ld de, .ToStr
-	hlcoord 14, 14
+	hlcoord 10, 14
 	call PlaceString
 	hlcoord 11, 16
 	ld a, [wTempMonLevel]
@@ -700,20 +700,20 @@ LoadPinkPage:
 	ret
 
 .Status_Type:
-	db   "STATUS/"
-	next "TYPE/@"
+	db   "ESTADO/";SITUAÇÃO/
+	next "TIPO/@"
 
 .OK_str:
 	db "OK @"
 
 .ExpPointStr:
-	db "EXP POINTS@"
+	db "PONTOS EXP@"
 
 .LevelUpStr:
-	db "LEVEL UP@"
+	db "FALTAM:@"
 
 .ToStr:
-	db "TO@"
+	db "PARA O@"
 
 .PkrsStr:
 	db "#RUS@"
@@ -761,11 +761,11 @@ LoadGreenPage:
 	db "---@"
 
 .Move:
-	db "MOVE@"
+	db "GOLPES@"
 
 LoadBluePage:
 	call .PlaceOTInfo
-	hlcoord 10, 8
+	hlcoord 9, 8
 	ld de, SCREEN_WIDTH
 	ld b, 10
 	ld a, $31 ; vertical divider
@@ -806,7 +806,7 @@ LoadBluePage:
 	jr z, .got_gender
 	ld a, "♀"
 .got_gender
-	hlcoord 9, 13
+	hlcoord 8, 14
 	ld [hl], a
 .done
 	ret
@@ -818,10 +818,10 @@ LoadBluePage:
 	dw wBufferMonOT
 
 IDNoString:
-	db "<ID>№.@"
+	db "<ID>№.@";№.<ID>@
 
 OTString:
-	db "OT/@"
+	db "TO/@"
 
 StatsScreen_PlaceFrontpic:
 	ld hl, wTempMonDVs
@@ -1012,12 +1012,12 @@ EggStatsScreen:
 	call PlaceString
 if DEF(_DEBUG)
 	ld de, .PushStartString
-	hlcoord 8, 17
+	hlcoord 6, 17
 	call PlaceString
 	jr .placed_push_start
 
 .PushStartString:
-	db "▶PUSH START.@"
+	db "▶APERTE START.@"23
 
 .placed_push_start
 endc
@@ -1052,7 +1052,7 @@ endc
 	ret
 
 EggString:
-	db "EGG@"
+	db "OVO@"
 
 FiveQMarkString:
 	db "?????@"
