@@ -86,6 +86,7 @@ PrintTempMonStats:
 ; Print wTempMon's stats at hl, with spacing bc.
 	push bc
 	push hl
+	dec hl
 	ld de, .StatNames
 	call PlaceString
 	pop hl
@@ -114,11 +115,11 @@ PrintTempMonStats:
 	ret
 
 .StatNames:
-	db   "ATTACK"
-	next "DEFENSE"
-	next "SPCL.ATK"
-	next "SPCL.DEF"
-	next "SPEED"
+	db   "ATAQUE"
+	next "DEFESA"
+	next "ATAQUE.ESP"
+	next "DEFESA.ESP"
+	next "VELOCIDADE"
 	next "@"
 
 GetGender:
@@ -387,7 +388,7 @@ PlaceStatusString:
 	ret
 
 FntString:
-	db "FNT@"
+	db "DESM@"
 
 CopyStatusString:
 	ld a, [de]
@@ -428,11 +429,11 @@ PlaceNonFaintStatus:
 	pop de
 	ret
 
-SlpString: db "SLP@"
-PsnString: db "PSN@"
-BrnString: db "BRN@"
-FrzString: db "FRZ@"
-ParString: db "PAR@"
+SlpString: db "DORM@"
+PsnString: db "ENVE@"
+BrnString: db "QMDO@"
+FrzString: db "CONG@"
+ParString: db "PARA@"
 
 ListMoves:
 ; List moves at hl, spaced every [wListMovesLineSpacing] tiles.
