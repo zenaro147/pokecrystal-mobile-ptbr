@@ -549,7 +549,7 @@ Continue_LoadMenuHeader:
 .MenuData_Dex:
 	db 0 ; flags
 	db 4 ; items
-	db "PESSOA@"
+	db "NOME@"
 	db "INSÍGNIAS@"
 	db "#DEX@"
 	db "TEMPO@"
@@ -563,7 +563,7 @@ Continue_LoadMenuHeader:
 .MenuData_NoDex:
 	db 0 ; flags
 	db 4 ; items
-	db "PESSOA <PLAYER>@"
+	db "NOME <PLAYER>@"
 	db "INSÍGNIAS@"
 	db " @"
 	db "TEMPO@"

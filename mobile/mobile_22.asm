@@ -2747,7 +2747,7 @@ Function8a17b:
 
 MenuHeader_0x8a19a:
 	db MENU_BACKUP_TILES ; flags
-	menu_coords 10, 0, SCREEN_WIDTH - 1, 6
+	menu_coords 11, 0, SCREEN_WIDTH - 1, 6
 	dw MenuData_0x8a1a2
 	db 1 ; default option
 

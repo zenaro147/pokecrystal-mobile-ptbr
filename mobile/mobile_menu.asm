@@ -460,8 +460,8 @@ MenuHeader_0x4a346: ; unreferenced
 
 String_4a34b:
 	db   "Mudar";"いれなおす"
-	next "Deletar";"けす"
-	next "Cancelar@";"もどる@"
+	next "Apagar";"けす"
+	next "Sair@";"もどる@"
 
 DeleteSavedLoginPasswordText:
 	text_far _DeleteSavedLoginPasswordText
