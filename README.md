@@ -1,4 +1,4 @@
-## Information 
+## Informação 
 
 A fork of pokecrystal designed to restore and localize Mobile Adapter functionality such as online battles and trades to Crystal using disassembled code from the Japanese ROM designed for use with Mobile System recreation projects like the REON Project.
 
@@ -7,10 +7,10 @@ We've been very strict on ensuring that any decisions made on the localization o
 
 This repository is built upon a substantial amount of work done by Sudel-Matze.
 
-A link to Matze’s repository can be found here:
+Um link para o repositório original do Matze pode ser encontrado abaixo:
 https://github.com/Sudel-Matze/pokecrystal
 
-## Screenshots
+## Imagens
 
 ![image](https://user-images.githubusercontent.com/110418063/188284868-5d25cf63-ec57-4780-b6d0-8b7ff90e3826.png)
 ![image](https://github.com/gb-mobile/pokecrystal-mobile-eng/assets/110418063/a1615c31-a83c-4406-ad72-beeb52abe0ad)
@@ -30,47 +30,32 @@ https://github.com/Sudel-Matze/pokecrystal
 
 
 
-## Setup [![Build Status][ci-badge]][ci]
+## Compilação [![Build Status][ci-badge]][ci]
 
-For more information, please see [INSTALL.md](INSTALL.md)
+Para mais informações, leia o arquivo [INSTALL.md](INSTALL.md)
 
-After setup has been completed, you can choose which version you wish to build.
-To build a specific version, run one of these commands inside the repository directory in cygwin64:
+Depois dos preparativos, você já pode compilar a ROM rodando o comando abaixo no diretório principal do projeto, usando o cygwin64:
 
-- US Version:   `make`
+- Versão BRA:   `make`
 
-- EUR Version:	`make crystal_eu` 
+## Usando os recursos do Adaptador Mobile
 
-- AUS Version:	`make crystal_au`
-
-For a more accurate experience, we advising picking the build version based on where you live as this will make different 'address' options available to you which are selectable for personal information.
-
-The US Version covers the United States and Canada.
-
-The EUR Version covers all countries in Europe (as of 2001).
-
-The AUS Version covers Australia and New Zealand.
-
-Other languages are being worked on, but are not complete and still require a lot of polish.
-
-## Using Mobile Adapter Features
-
-To take advantage of the Mobile Adapter features, we currently recommend the GameBoy Emulator BGB:
+Para utilizar os recursos do Adaptador Mobile, atualmente recomendados o Emulador de GameBoy BGB:
 https://bgb.bircd.org/
 
-and libmobile-bgb:
+E o libmobile-bgb:
 https://github.com/REONTeam/libmobile-bgb/releases
 
-Simply open BGB, right click the ‘screen’ and select `Link > Listen`, then accept the port it provides by clicking `OK`.
-Once done, run the latest version of libmobile for your operating system (`mobile-windows.exe` or windows and `mobile-linux` for linux).
-Now right click the ‘screen’ on BGB again and select `Load ROM…`, then choose the pokecrystal-mobile `.gbc` file you have built.
+Simplesmente abra o BGB, clique com o botão dirento na ‘tela’ e selecione `Link > Listen`, em seguida clique em `OK`.
+Feito isso, rode a última versão do libmobile-bgb para seu sistema operacional (`mobile-windows.exe` para Windows e `mobile-linux` para Linux).
+Agora, clique com o botão dirento na ‘tela’ do BGB novamente e selecione `Load ROM…`, então escolha o arquivo `.gbc` no diretório do projeto no qual você acabou de compilar.
 
-## Mobile Adapter Features
+## Recursos do Adaptador Mobile
 
-A full list of Mobile Adapter features for Pokémon Crystal can be found here:
+Uma lista completa dos recursos do Adaptador Mobile para Pokémon Cristal pode ser encontrada aqui:
 https://github.com/gb-mobile/pokecrystal-mobile-en/wiki/Pok%C3%A9mon-Crystal-Mobile-Features
 
-## Contributors
+## Contribuições
 
 - Pret           : Initial disassembly
 - Matze          : Mobile Restoration & Japanese Code Disassembly
@@ -80,6 +65,12 @@ https://github.com/gb-mobile/pokecrystal-mobile-en/wiki/Pok%C3%A9mon-Crystal-Mob
 - Vulcandth      : Rebasing and keeping the repo up to date
 - Zumilsawhat?   : Code (Large amounts of work on the EZ Chat system)
 - REON Community : Support and Assistance
+
+## Tradução
+- [Zenaro147](https://github.com/zenaro147)
+- [Hyd](https://github.com/hydhyro)
+- [Central de Traduções](https://www.centraldetraducoes.net.br/)
+- [Elite dos Quatro Traduções](https://www.e4t.com.br/)
 
 [ci]: https://github.com/pret/pokecrystal/actions
 [ci-badge]: https://github.com/pret/pokecrystal/actions/workflows/main.yml/badge.svg
