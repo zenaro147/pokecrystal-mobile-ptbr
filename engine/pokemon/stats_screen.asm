@@ -1017,7 +1017,7 @@ if DEF(_DEBUG)
 	jr .placed_push_start
 
 .PushStartString:
-	db "▶APERTE START.@"23
+	db "▶APERTE START.@"
 
 .placed_push_start
 endc
