@@ -52,7 +52,7 @@ MainMenu:
 
 .MenuHeader:
 	db MENU_BACKUP_TILES ; flags
-	menu_coords 0, 0, 16, 7
+	menu_coords 0, 0, 18, 7;largura (máx19) / nº linhas
 	dw .MenuData
 	db 1 ; default option
 
@@ -68,7 +68,7 @@ MainMenu:
 	db "CONTINUAR@"
 	db "NOVO JOGO@"
 	db "OPÇÕES@"
-	db "BRINDE SECRETO@"
+	db "BRINDE MISTERIOSO@"
 	db "MOBILE@"
 	db "MOBILE STADIUM@"
 if DEF(_DEBUG)
