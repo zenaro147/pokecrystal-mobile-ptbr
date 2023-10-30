@@ -196,11 +196,11 @@ StartMenu_PrintBugContestStatus:
 .BallsJPString: ; unreferenced
 	db "ボール　　　こ@"
 .CaughtString:
-	db "CAUGHT@"
+	db "PEGOS@"
 .BallsString:
-	db "BALLS:@"
+	db "BOLAS:@"
 .NoneString:
-	db "None@"
+	db "Nada@"
 .LevelString:
 	db "LEVEL@"
 
