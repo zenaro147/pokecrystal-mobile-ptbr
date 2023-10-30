@@ -215,7 +215,7 @@ if DEF(_DEBUG)
 	ld a, 127
 	ld [wStepCount], a
 	ld de, .HatchSoonString
-	hlcoord 2, 17
+	hlcoord 8, 17
 	call PlaceString
 	ld hl, wStatsScreenFlags
 	set 5, [hl]
@@ -598,7 +598,7 @@ LoadPinkPage:
 	ld a, [wMonType]
 	cp BOXMON
 	jr z, .StatusOK
-	hlcoord 5, 13
+	hlcoord 6, 13
 	push hl
 	ld de, wTempMonStatus
 	predef PlaceStatusString
@@ -643,7 +643,7 @@ LoadPinkPage:
 	hlcoord 10, 12
 	call PlaceString
 	ld de, .ToStr
-	hlcoord 10, 14
+	hlcoord 12, 14
 	call PlaceString
 	hlcoord 11, 16
 	ld a, [wTempMonLevel]
@@ -710,10 +710,10 @@ LoadPinkPage:
 	db "PONTOS EXP@"
 
 .LevelUpStr:
-	db "FALTAM:@"
+	db "FALTA:@"
 
 .ToStr:
-	db "PARA O@"
+	db "PARA@"
 
 .PkrsStr:
 	db "#RUS@"
@@ -765,7 +765,7 @@ LoadGreenPage:
 
 LoadBluePage:
 	call .PlaceOTInfo
-	hlcoord 9, 8
+	hlcoord 10, 8
 	ld de, SCREEN_WIDTH
 	ld b, 10
 	ld a, $31 ; vertical divider
@@ -806,7 +806,7 @@ LoadBluePage:
 	jr z, .got_gender
 	ld a, "♀"
 .got_gender
-	hlcoord 8, 14
+	hlcoord 9, 13
 	ld [hl], a
 .done
 	ret
@@ -1012,7 +1012,7 @@ EggStatsScreen:
 	call PlaceString
 if DEF(_DEBUG)
 	ld de, .PushStartString
-	hlcoord 6, 17
+	hlcoord 8, 17
 	call PlaceString
 	jr .placed_push_start
 

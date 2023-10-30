@@ -52,7 +52,7 @@ MainMenu:
 
 .MenuHeader:
 	db MENU_BACKUP_TILES ; flags
-	menu_coords 0, 0, 18, 7;largura (máx19) / nº linhas
+	menu_coords 0, 0, 19, 7;largura (máx19) / nº linhas
 	dw .MenuData
 	db 1 ; default option
 

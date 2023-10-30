@@ -86,7 +86,7 @@ PrintTempMonStats:
 ; Print wTempMon's stats at hl, with spacing bc.
 	push bc
 	push hl
-	dec hl
+	;dec hl
 	ld de, .StatNames
 	call PlaceString
 	pop hl
@@ -117,9 +117,9 @@ PrintTempMonStats:
 .StatNames:
 	db   "ATAQUE"
 	next "DEFESA"
-	next "ATAQUE.ESP"
-	next "DEFESA.ESP"
-	next "VELOCIDADE"
+	next "ATQ. ESP."
+	next "DEF. ESP."
+	next "AGILIDADE"
 	next "@"
 
 GetGender:
