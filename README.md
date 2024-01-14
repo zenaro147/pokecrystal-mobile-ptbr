@@ -61,6 +61,7 @@ https://github.com/gb-mobile/pokecrystal-mobile-en/wiki/Pok%C3%A9mon-Crystal-Mob
 - Matze          : Mobile Restoration & Japanese Code Disassembly
 - Damien         : Code
 - DS             : GFX & Code
+- Nob Ogasawara  : Consultation on minor menu translations
 - Ryuzac         : Code & Japanese Translation
 - Vulcandth      : Rebasing and keeping the repo up to date
 - Zumilsawhat?   : Code (Large amounts of work on the EZ Chat system)
