@@ -2490,13 +2490,13 @@ Function11cdaa:
 
 EZChatString_SortByCategory:
 ; Words will be displayed by category
-	db   "Display words";"ことば¯しゅるいべつに"
-	next "by category@";"えらべます@"
+	db   "Words are listed";"ことば¯しゅるいべつに"
+	next "by category.@";"えらべます@"
 
 EZChatString_SortByAlphabetical:
 ; Words will be displayed in alphabetical order
-	db   "Display words in";"ことば¯アイウエオ　の"
-	next "alphabetical order@";"じゅんばんで　ひょうじ　します@"
+	db   "Words are listed";"ことば¯アイウエオ　の"
+	next "alphabetically.@";"じゅんばんで　ひょうじ　します@"
 
 EZChatString_SortByMenu:
 	db   "GROUP MODE";"しゅるいべつ　モード"  ; Category mode
