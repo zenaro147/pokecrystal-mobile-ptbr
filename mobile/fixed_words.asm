@@ -953,7 +953,7 @@ EZChatDrawBKG_ChatWords:
 EZChatString_ChatExplanation: ; Explanation string
 	db   "Combine four words";"６つのことば¯くみあわせます"
 	next "or phrases.";"かえたいところ¯えらぶと　でてくる"
-	next "Select a space";"ことばのグループから　いれかえたい"
+	next "Select a place";"ことばのグループから　いれかえたい"
 	next "and choose a word.";"たんご¯えらんでください"
 	db   "@"
 
