@@ -3920,7 +3920,7 @@ ENDM
 	ezchat_word "EXCUSE@@", $180
 	ezchat_word "SEE YA@@", $416
 	ezchat_word "YO!@@@@@", $5c6
-	ezchat_word "WELL...@", $56e
+	ezchat_word "WELL…@@@", $56e
 	ezchat_word "GRATEFUL", $210
 	ezchat_word "WASSUP?@", $556
 	ezchat_word "HI@@@@@@", $24e
