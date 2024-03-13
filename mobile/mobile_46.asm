@@ -5718,12 +5718,11 @@ String_11a743:
     next "stored data!@";"あります！@"
 	
 String_11a755:
-    db   "Read the";"データ<WO>よみこみますか？@"
-    next "data?@"
+    db   "Read the data?";"データ<WO>よみこみますか？@"
 	
 String_11a762:
-    db   "Read the";"おなじ　データ<WO>よみこんだ"
-    next "same data.@";"こと<GA>ありますが@"
+    db   "Read the same";"おなじ　データ<WO>よみこんだ"
+    next "data.@";"こと<GA>ありますが@"
 	
 String_11a779:
     db   "The data is";"そのデータ<WA>なくなっているか"
