@@ -52,7 +52,7 @@ MainMenu:
 
 .MenuHeader:
 	db MENU_BACKUP_TILES ; flags
-	menu_coords 0, 0, 16, 7
+	menu_coords 0, 0, 19, 7;largura (máx19) / nº linhas
 	dw .MenuData
 	db 1 ; default option
 
@@ -65,10 +65,10 @@ MainMenu:
 
 .Strings:
 ; entries correspond to MAINMENUITEM_* constants
-	db "CONTINUE@"
-	db "NEW GAME@"
-	db "OPTION@"
-	db "MYSTERY GIFT@"
+	db "CONTINUAR@"
+	db "NOVO JOGO@"
+	db "OPÇÕES@"
+	db "BRINDE MISTERIOSO@"
 	db "MOBILE@"
 	db "MOBILE STADIUM@"
 if DEF(_DEBUG)
@@ -381,7 +381,7 @@ MainMenu_PrintCurrentTimeAndDay:
 	ret
 
 .TimeNotSetString:
-	db "TIME NOT SET@"
+	db "SEM DATA-HORA@"
 
 .MainMenuTimeUnknownText: ; unreferenced
 	text_far _MainMenuTimeUnknownText
@@ -403,15 +403,15 @@ MainMenu_PrintCurrentTimeAndDay:
 	ret
 
 .Days:
-	db "SUN@"
-	db "MON@"
-	db "TUES@"
-	db "WEDNES@"
-	db "THURS@"
-	db "FRI@"
-	db "SATUR@"
+	db "DOMINGO@"
+	db "SEGUNDA-FEIRA@"
+	db "TERÇA-FEIRA@"
+	db "QUARTA-FEIRA@"
+	db "QUINTA-FEIRA@"
+	db "SEXTA-FEIRA@"
+	db "SÁBADO@"
 .Day:
-	db "DAY@"
+	db "@"
 
 ClearTilemapEtc:
 	xor a

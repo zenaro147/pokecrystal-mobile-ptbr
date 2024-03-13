@@ -102,34 +102,34 @@ Function49f16:
 	jp .joy_loop
 
 MobileString1:
-	db   "Card Folder"
-	next "Greetings"
-	next "Profile"
-	next "Option"
-	next "Cancel"
+	db   "Cartões"
+	next "Saudações"
+	next "Perfil"
+	next "Opções"
+	next "Cancelar"
 	db   "@"
 
 MobileStrings2:
 ; string 0
 String_0x49fe9:
-	db   "Create and store"
-	next "CARDS in a folder.@"
+	db   "Cria e salva CAR-"
+	next "TÕES numa pasta.@"
 
 String_0x4a004:
-	db   "Compose CARD and";"モバイルたいせんや　じぶんのめいしで"
-	next "battle greetings.@";"つかう　あいさつ¯つくります@"
+	db   "Cria um CARTÃO e";"モバイルたいせんや　じぶんのめいしで"
+	next "as saudações.@";"つかう　あいさつ¯つくります@"
 
 String_0x4a026:
-	db   "Change your age";"あなた<NO>じゅうしょや　ねんれいの"
-	next "and address.@";"せ<TTE>い¯かえられます@"
+	db   "Mudar sua idade";"あなた<NO>じゅうしょや　ねんれいの"
+	next "e endereço.@";"せ<TTE>い¯かえられます@"
 
 String_0x4a042:
-	db   "Choose settings";"モバイルセンター<NI>せつぞくするとき"
-	next "used to connect.@";"ひつような　こと¯きめます@"
+	db   "Mudar as config.";"モバイルセンター<NI>せつぞくするとき"
+	next "de conexão.@";"ひつような　こと¯きめます@"
 
 String_0x4a062:
-	db   "Return to the";"まえ<NO>がめん　<NI>もどります"
-	next "previous screen.@";"@"
+	db   "Voltar para a";"まえ<NO>がめん　<NI>もどります"
+	next "tela anterior.@";"@"
 
 MobileMenu_InitMenuBuffers:
 	ld hl, w2DMenuCursorInitY
@@ -332,9 +332,9 @@ asm_4a19d:
 	jp Function4a195
 
 String_4a1ef:
-	db   "Mobile Center";"モバイルセンター¯えらぶ"
-	next "Log-in Password";"ログインパスワード¯いれる"
-	next "Cancel@";"もどる@"
+	db   "Centro Mobile";"モバイルセンター¯えらぶ"
+	next "Senha de Log-in";"ログインパスワード¯いれる"
+	next "Cancelar@";"もどる@"
 
 Function4a20e:
 	ld a, $1
@@ -362,14 +362,14 @@ Function4a239:
 	jp Function4a13b
 
 Strings_4a23d:
-	db   "Choose the MOBILE";"いつも　せつぞく¯する"
-	next "CENTER to use.@";"モバイルセンター¯えらびます@"
+	db   "Escolha um CENTRO";"いつも　せつぞく¯する"
+	next "MOBILE para usar.@";"モバイルセンター¯えらびます@"
 
-	db   "The PASSWORD used";"モバイルセンター<NI>せつぞくするとき"
-	next "to connect.@";"つかうパスワード¯ほぞんできます@"
+	db   "SENHA usada para";"モバイルセンター<NI>せつぞくするとき"
+	next "se conectar.@";"つかうパスワード¯ほぞんできます@"
 
-	db   "Return to the";"まえ<NO>がめん　<NI>もどります@"
-	next "previous screen.@"
+	db   "Voltar para a";"まえ<NO>がめん　<NI>もどります"
+	next "tela anterior.@"
 
 	db   "@"
 
@@ -459,9 +459,9 @@ MenuHeader_0x4a346: ; unreferenced
 	menu_coords 11, 0, SCREEN_WIDTH - 1, 6;12, 0, SCREEN_WIDTH - 1, 6
 
 String_4a34b:
-	db   "Change";"いれなおす"
-	next "Delete";"けす"
-	next "Cancel@";"もどる@"
+	db   "Mudar";"いれなおす"
+	next "Apagar";"けす"
+	next "Sair@";"もどる@"
 
 DeleteSavedLoginPasswordText:
 	text_far _DeleteSavedLoginPasswordText
@@ -480,8 +480,8 @@ DeletePassword_YesNo_MenuHeader:
 MenuData_0x4a36a:
 	db STATICMENU_CURSOR | STATICMENU_NO_TOP_SPACING | STATICMENU_WRAP ; flags
 	db 2 ; items
-	db "YES@";"はい@"
-	db "NO@";"いいえ@"
+	db "SIM@";"はい@"
+	db "NÃO@";"いいえ@"
 
 Function4a373:
 	ld hl, w2DMenuCursorInitY
@@ -763,27 +763,27 @@ Function4a5b0:
 	jp Function4a545
 
 String_4a5c5:
-	db "Introduction@";"じこしょうかい@"
+	db "Introdução@";"じこしょうかい@"
 String_4a5cd:
-	db "Begin Battle@";"たいせん　<GA>はじまるとき@"
+	db "Ao Iniciar@";"たいせん　<GA>はじまるとき@"
 String_4a5da:
-	db "Win Battle@";"たいせん　<NI>かったとき@"
+	db "Ao Vencer@";"たいせん　<NI>かったとき@"
 String_4a5e6:
-	db "Lose Battle@";"たいせん　<NI>まけたとき@"
+	db "Ao Perder@";"たいせん　<NI>まけたとき@"
 String_4a5f2:
-	db "Cancel@";"もどる@"
+	db "Cancelar@";"もどる@"
 
 Strings_4a5f6:
-	db "Shown on your@";"めいし　や　ニュース　<NI>のせる@"
-	db "CARD and the NEWS.@";"あなた<NO>あいさつです@"
-	db "Seen upon starting@";"モバイル　たいせん<GA>はじまるとき@"
-	db "a mobile battle.@";"あいて<NI>みえる　あいさつです@"
-    db "Seen upon winning@";"モバイル　たいせんで　かったとき@"
-    db "a mobile battle.@";"あいて<NI>みえる　あいさつです@"
-    db "Seen upon losing@";"モバイル　たいせんで　まけたとき@"
-    db "a mobile battle.@";"あいて<NI>みえる　あいさつです@"
-	db "Return to the@";"まえ<NO>がめん　<NI>もどります@"
-	db "previous screen.@"
+	db "Exibido no CARTÃO@";"めいし　や　ニュース　<NI>のせる@"
+	db "e nas NOTÍCIAS.@";"あなた<NO>あいさつです@"
+	db "Exibido no início@";"モバイル　たいせん<GA>はじまるとき@"
+	db "da luta mobile.@";"あいて<NI>みえる　あいさつです@"
+    db "Exibido ao ganhar@";"モバイル　たいせんで　かったとき@"
+    db "uma luta mobile.@";"あいて<NI>みえる　あいさつです@"
+    db "Exibido ao perder@";"モバイル　たいせんで　まけたとき@"
+    db "uma luta mobile.@";"あいて<NI>みえる　あいさつです@"
+	db "Voltar para a@";"まえ<NO>がめん　<NI>もどります@"
+	db "tela anterior.@"
 
 Function4a680:
 	ld hl, w2DMenuCursorInitY
