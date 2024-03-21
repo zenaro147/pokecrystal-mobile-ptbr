@@ -49,7 +49,7 @@ The US Version covers the United States and Canada.
 
 The EUR Version covers all countries in Europe (as of 2001).
 
-The AUS Version covers Australia and New Zealand.
+The AUS Version covers Australia & New Zealand.
 
 Other languages are being worked on, but are not complete and still require a lot of polish.
 
