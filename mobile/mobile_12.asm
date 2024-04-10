@@ -1884,11 +1884,32 @@ Fill_HL_with_A_C_times:
 
 ; Input: BC: coords of the cursor under the first PIN char. D: contains the tile ID. E: index of the char.
 Mobile12_MoveAndBlinkCursor:
+	ld a, [wPrefecture]
+	cp $10 ; EU-GB special case.
+	jr nz, .hide_cursor
+
+	ld a, e
+	cp 5
+	jr c, .hide_cursor
+
+	push hl
+	push bc
+	ld hl, wZipCode
+	ld b, 0
+	ld c, a
+	add hl, bc
+	ld a, [hl]
+	cp 0
+	pop bc
+	pop hl
+	jr nz, .hide_cursor
+
 	;call Mobile22_IncCursorFrameCounter
 	ld a, [wd002]
 	bit 4, a
 	jr z, .skip_cursor_hiding
 
+.hide_cursor
 	push de
 	farcall Mobile22_Clear24FirstOAM
 	pop de
