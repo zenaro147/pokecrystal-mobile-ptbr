@@ -1366,7 +1366,9 @@ asm_48972:
 	ld d, $0
 	ld b, $71; Y. Supposed to be $70 with GFX_underscore.
 	ld c, (18 - ZIPCODE_LENGTH + 1) * 8; X.
+if DEF(_CRYSTAL_EU)
 	call Mobile12_MoveAndBlinkCursor
+endc
 	;farcall Mobile22_MoveAndBlinkCursor
 	pop de
 	pop af
