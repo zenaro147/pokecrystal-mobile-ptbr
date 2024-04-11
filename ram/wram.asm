@@ -2960,8 +2960,8 @@ wBugContestSecsRemaining:: db
 
 wMapStatusEnd::
 
-;	ds 1 ; Moved to wZipCode.
 ds 1
+wZipcodeFormat:: db ; Stores the index of the char pool to use.
 
 wCrystalData::
 wPlayerGender::

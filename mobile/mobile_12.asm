@@ -9,7 +9,9 @@ InitMobileProfile:
 	call z, InitCrystalData
 	call ClearBGPalettes
 	call LoadZipcodeWithUniversalFormat
-
+if !DEF(_CRYSTAL_AU)
+	call RetrieveZipcodeFormat
+endc
 	call DisableLCD
 	farcall Mobile22_Clear24FirstOAM
 	;farcall Mobile22_LoadMobileAdapterGFXIntoVRAM
@@ -120,7 +122,7 @@ InitMobileProfile:
 	hlcoord 1, 16 ; 'Personal Info' text position
 	ld de, MobileString_PersonalInfo
 	call PlaceString
-	call Function48187
+	call Mobile12_ClearBlankUserParameters
 	call WaitBGMap2
 	call SetPalettes
 	call StaticMenuJoypad
@@ -128,6 +130,21 @@ InitMobileProfile:
 	ld b, [hl]
 	push bc
 	jr asm_4815f
+
+if !DEF(_CRYSTAL_AU)
+RetrieveZipcodeFormat:
+	ld a, [wPrefecture]
+	dec a
+
+	ld hl, PrefectureZipcodeFormat
+	ld c, a
+	ld b, 0
+	add hl, bc ; HL contains the address of the format index.
+
+	ld a, [hl]
+	ld [wZipcodeFormat], a
+	ret
+endc
 
 Function48157:
 	call ScrollingMenuJoypad
@@ -157,7 +174,7 @@ asm_4815f:
 	ld a, $ff
 	ret
 
-Function48187:
+Mobile12_ClearBlankUserParameters:
 	ld a, [wd479]
 	bit 1, a
 	jr nz, .asm_481f1
@@ -384,12 +401,12 @@ RegionCodePressed:
 	ldh a, [hJoyPressed]
 	bit A_BUTTON_F, a
 	jr z, .asm_48377
-	call DisplayRegionCodesList
+	call SavePrefectureAndDisplayIt
 	ld a, [wMobileProfileParametersFilled]
 	set 2, a
 	ld [wMobileProfileParametersFilled], a
 .asm_48377
-	call Function48187
+	call Mobile12_ClearBlankUserParameters
 	farcall Mobile_OpenAndCloseMenu_HDMATransferTilemapAndAttrmap
 	jp ReturnToMobileProfileMenu
 
@@ -435,12 +452,45 @@ RegionCodeEdit_LeftRight:
 	pop bc
 	ret
 
-DisplayRegionCodesList:
+SavePrefectureAndDisplayIt:
 	ld hl, wScrollingMenuCursorPosition
 	ld a, [hl]
 	inc a
 	ld [wPrefecture], a
 	dec a
+
+if !DEF(_CRYSTAL_AU)
+	ld hl, PrefectureZipcodeFormat
+	ld c, a
+	ld b, 0
+	add hl, bc ; HL contains the address of the format index.
+
+	ld a, [wZipcodeFormat]
+	cp [hl]
+	ld a, [hl]
+	ld [wZipcodeFormat], a
+	jr z, .zipcode_reset_managed ; If the previous and current zipcode formats match, there's no need to reset the zipcode.
+
+	; We reset the zipcode to its default value.
+	ld hl, wZipCode
+	ld bc, ZIPCODE_LENGTH
+	xor a
+	call ByteFill ; fill bc bytes with the value of a, starting at hl
+
+	; We select "Tell Later".
+	ld a, [wMobileProfileParametersFilled]
+	res 3, a
+	ld [wMobileProfileParametersFilled], a
+
+	; We tell the UI to refresh.
+	ld a, [wd479]
+	res 0, a
+	ld [wd479], a
+
+.zipcode_reset_managed
+	ld hl, wScrollingMenuCursorPosition
+	ld a, [hl]
+endc
 	ld b, a
 	ld hl, Prefectures
 .outer_loop
@@ -498,7 +548,7 @@ endc
 	ret
 
 ReturnToMobileProfileMenu:
-	call Function48187
+	call Mobile12_ClearBlankUserParameters
 	call ClearMobileProfileBottomTextBox
 	hlcoord 1, 16
 	ld de, MobileString_PersonalInfo
@@ -557,6 +607,116 @@ Mobile12_Index2CharDisplay:
 	ld [hl], a
 	pop de
 	ret
+
+if DEF(_CRYSTAL_EU)
+PrefectureZipcodeFormat:
+	db 0  ; EU-AD
+	db 1  ; EU-AL
+	db 1  ; EU-AT
+	db 2  ; EU-BA
+	db 1  ; EU-BE
+	db 1  ; EU-BG
+	db 3  ; EU-BY
+	db 1  ; EU-CH
+	db 2  ; EU-CZ
+	db 2  ; EU-DE
+	db 1  ; EU-DK
+	db 2  ; EU-EE
+	db 2  ; EU-ES
+	db 2  ; EU-FI
+	db 2  ; EU-FR
+	db 4  ; EU-GB
+	db 2  ; EU-GR
+	db 2  ; EU-HR
+	db 1  ; EU-HU
+	db 5  ; EU-IE
+	db 6  ; EU-IS
+	db 2  ; EU-IT
+	db 1  ; EU-LI
+	db 7  ; EU-LT
+	db 1  ; EU-LU
+	db 8  ; EU-LV
+	db 8  ; EU-MD
+	db 9  ; EU-MT
+	db 10 ; EU-NL
+	db 1  ; EU-NO
+	db 2  ; EU-PL
+	db 11 ; EU-PT
+	db 3  ; EU-RO
+	db 2  ; EU-RS
+	db 3  ; EU-RU
+	db 2  ; EU-SE
+	db 12 ; EU-SI
+	db 2  ; EU-SK
+	db 2  ; EU-SM
+	db 2  ; EU-UA
+
+elif !DEF(_CRYSTAL_AU) ; US zone. AU zone has no prefecture-specific zipcode format.
+PrefectureZipcodeFormat:
+	db 0 ; US-AL
+	db 0 ; US-AK
+	db 0 ; US-AZ
+	db 0 ; US-AR
+	db 0 ; US-CA
+	db 0 ; US-CO
+	db 0 ; US-CT
+	db 0 ; US-DE
+	db 0 ; US-FL
+	db 0 ; US-GA
+	db 0 ; US-HI
+	db 0 ; US-ID
+	db 0 ; US-IL
+	db 0 ; US-IN
+	db 0 ; US-IA
+	db 0 ; US-KS
+	db 0 ; US-KY
+	db 0 ; US-LA
+	db 0 ; US-ME
+	db 0 ; US-MD
+	db 0 ; US-MA
+	db 0 ; US-MI
+	db 0 ; US-MN
+	db 0 ; US-MS
+	db 0 ; US-MO
+	db 0 ; US-MT
+	db 0 ; US-NE
+	db 0 ; US-NV
+	db 0 ; US-NH
+	db 0 ; US-NJ
+	db 0 ; US-NM
+	db 0 ; US-NY
+	db 0 ; US-NC
+	db 0 ; US-ND
+	db 0 ; US-OH
+	db 0 ; US-OK
+	db 0 ; US-OR
+	db 0 ; US-PA
+	db 0 ; US-RI
+	db 0 ; US-SC
+	db 0 ; US-SD
+	db 0 ; US-TN
+	db 0 ; US-TX
+	db 0 ; US-UT
+	db 0 ; US-VT
+	db 0 ; US-VA
+	db 0 ; US-WA
+	db 0 ; US-WV
+	db 0 ; US-WI
+	db 0 ; US-WY
+	db 1 ; CA-AB
+	db 1 ; CA-BC
+	db 1 ; CA-MB
+	db 1 ; CA-NB
+	db 1 ; CA-NL
+	db 1 ; CA-NS
+	db 1 ; CA-ON
+	db 1 ; CA-PE
+	db 1 ; CA-QC
+	db 1 ; CA-SK
+	db 1 ; CA-NT
+	db 1 ; CA-NU
+	db 1 ; CA-YT
+endc
 
 Zipcode_CharPools:
 DEF N = ZIPCODE_LENGTH
