@@ -2960,8 +2960,8 @@ wBugContestSecsRemaining:: db
 
 wMapStatusEnd::
 
-ds 1
 wZipcodeFormat:: db ; Stores the index of the char pool to use.
+wZipcodeFormatLength:: db ; ZIPCODE_LENGTH is the max length, and wZipcodeFormatLength is the max length of the current format, which is <= to ZIPCODE_LENGTH.
 
 wCrystalData::
 wPlayerGender::

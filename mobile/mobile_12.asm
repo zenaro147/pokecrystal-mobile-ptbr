@@ -143,6 +143,12 @@ RetrieveZipcodeFormat:
 
 	ld a, [hl]
 	ld [wZipcodeFormat], a
+
+	ld hl, ZipcodeFormatLengths
+	ld c, a
+	add hl, bc
+	ld a, [hl]
+	ld [wZipcodeFormatLength], a
 	ret
 endc
 
@@ -471,6 +477,13 @@ if !DEF(_CRYSTAL_AU)
 	ld [wZipcodeFormat], a
 	jr z, .zipcode_reset_managed ; If the previous and current zipcode formats match, there's no need to reset the zipcode.
 
+	; We retrieve the new format length.
+	ld hl, ZipcodeFormatLengths
+	ld c, a
+	add hl, bc
+	ld a, [hl]
+	ld [wZipcodeFormatLength], a
+
 	; We reset the zipcode to its default value.
 	ld hl, wZipCode
 	ld bc, ZIPCODE_LENGTH
@@ -651,6 +664,21 @@ PrefectureZipcodeFormat:
 	db 2  ; EU-SM
 	db 2  ; EU-UA
 
+ZipcodeFormatLengths:
+	db 3 ; 0:  - - -
+	db 4 ; 1:  0-9 0-9 0-9 0-9
+	db 5 ; 2:  0-9 0-9 0-9 0-9 0-9
+	db 6 ; 3:  0-9 0-9 0-9 0-9 0-9 0-9
+	db 7 ; 4:  A-Z 0-Z 0-Z 0-Z 0-Z BLANK+A-Z BLANK+A-Z
+	db 7 ; 5:  A-Z 0-9 0-Z 0-Z 0-Z 0-Z 0-Z
+	db 3 ; 6:  0-9 0-9 0-9
+	db 7 ; 7:  A-Z A-Z 0-9 0-9 0-9 0-9 0-9
+	db 6 ; 8:  A-Z A-Z 0-9 0-9 0-9 0-9
+	db 7 ; 9:  A-Z A-Z A-Z 0-9 0-9 0-9 0-9
+	db 6 ; 10: 0-9 0-9 0-9 0-9 A-Z A-Z
+	db 7 ; 11: 0-9 0-9 0-9 0-9 0-9 0-9 0-9
+	db 6 ; 12: S I 0-9 0-9 0-9 0-9
+
 elif !DEF(_CRYSTAL_AU) ; US zone. AU zone has no prefecture-specific zipcode format.
 PrefectureZipcodeFormat:
 	db 0 ; US-AL
@@ -716,6 +744,10 @@ PrefectureZipcodeFormat:
 	db 1 ; CA-NT
 	db 1 ; CA-NU
 	db 1 ; CA-YT
+
+ZipcodeFormatLengths:
+	db 5 ; 0: 0-9 0-9 0-9 0-9 0-9
+	db 6 ; 1: A-Z 0-9 A-Z 0-9 A-Z 0-9
 endc
 
 Zipcode_CharPools:
@@ -1814,9 +1846,11 @@ InputZipcodeCharacters: ; Function48ab5. Zip code menu controls.
 	ld c, ZIPCODE_LENGTH + ZIPCODE_FRAME_RIGHT_MARGIN; Zip Code Menu width
 	call DisplayBlankGoldenBox
 	pop de
-	ld a, d
-	cp ZIPCODE_LENGTH - 1 ; Limits how far you can press D_RIGHT
-	jr nc, .asm_48baf
+	ld a, [wZipcodeFormatLength]
+	dec a
+	cp d ; Limits how far you can press D_RIGHT
+	jr c, .asm_48baf ; useless, but kept in case the memory got corrupted.
+	jr z, .asm_48baf
 	inc d
 .asm_48baf
 	pop af
