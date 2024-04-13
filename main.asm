@@ -188,7 +188,9 @@ INCLUDE "mobile/mobile_menu.asm"
 INCLUDE "engine/pokemon/search_owned.asm"
 INCLUDE "mobile/mobile_12_2.asm"
 INCLUDE "engine/events/buena_menu.asm"
-
+INCLUDE "mobile/prefecture_to_postcode_pairs.asm"
+INCLUDE "mobile/postcode_formats.asm"
+INCLUDE "mobile/charpools.asm"
 
 SECTION "bank13", ROMX
 

@@ -113,7 +113,6 @@ endc
 	ld e, l
 	hlcoord 19 - REGION_CODE_STRING_LENGTH, 9 ; Default Prefectures position in MOBILE menu
 	call PlaceString
-	hlcoord 18 - ZIPCODE_LENGTH, 11 ; Zip Code Position in MOBILE menu
 	call DisplayZipCodeRightAlign
 	hlcoord 0, 14 ; 'Personal Info' box position
 	ld b, $2
@@ -586,7 +585,7 @@ ReturnToMobileProfileMenu:
 	call ClearBox
 	jp Function48157
 
-; Inputs: char pool index in A, screen tile coord in HL.
+; Inputs: char pool index in A, left offset in B, screen tile coord in HL.
 Mobile12_Index2CharDisplay:
 	push de
 	push hl
@@ -594,244 +593,24 @@ Mobile12_Index2CharDisplay:
 	push af
 	ld a, l
 	hlcoord 18 - ZIPCODE_LENGTH, 11
-	push de
 	ld e, b
 	ld d, 0
 	add hl, de
-	pop de
 
 	; Zip Code Location. Note that wTilemap is added to it. wTilemap is "align 8" ($X00) + $A0. "18 - ZIPCODE_LENGTH, 11" is $E7. Which makes $C587.
 	; The last zipcode char would be stored at address $C58E. The last byte doesn't overflow or underflow between the first and the last chat pos, so we can subtract those to get the index in the string of the current char.
 	sub l ; A now contains the char index in the zipcode string between 0 and ZIPCODE_LENGTH.
-	add a ; We double A because Zipcode_CharPools is a list of dw (2 bytes).
-	ld e, a
-	ld d, 0
-	ld hl, Zipcode_CharPools
-	add hl, de
-	ld a, [hli]
-	ld h, [hl]
-	ld l, a
+
+	call GetCurCharpoolAddress
 
 	pop af
-	ld e, a
+	ld e, a ; A is the char pool index given as a parameter of this function.
 	add hl, de
 	ld a, [hl]
 	pop hl
 	ld [hl], a
 	pop de
 	ret
-
-if DEF(_CRYSTAL_EU)
-PrefectureZipcodeFormat:
-	db 0  ; EU-AD
-	db 1  ; EU-AL
-	db 1  ; EU-AT
-	db 2  ; EU-BA
-	db 1  ; EU-BE
-	db 1  ; EU-BG
-	db 3  ; EU-BY
-	db 1  ; EU-CH
-	db 2  ; EU-CZ
-	db 2  ; EU-DE
-	db 1  ; EU-DK
-	db 2  ; EU-EE
-	db 2  ; EU-ES
-	db 2  ; EU-FI
-	db 2  ; EU-FR
-	db 4  ; EU-GB
-	db 2  ; EU-GR
-	db 2  ; EU-HR
-	db 1  ; EU-HU
-	db 5  ; EU-IE
-	db 6  ; EU-IS
-	db 2  ; EU-IT
-	db 1  ; EU-LI
-	db 7  ; EU-LT
-	db 1  ; EU-LU
-	db 8  ; EU-LV
-	db 8  ; EU-MD
-	db 9  ; EU-MT
-	db 10 ; EU-NL
-	db 1  ; EU-NO
-	db 2  ; EU-PL
-	db 11 ; EU-PT
-	db 3  ; EU-RO
-	db 2  ; EU-RS
-	db 3  ; EU-RU
-	db 2  ; EU-SE
-	db 12 ; EU-SI
-	db 2  ; EU-SK
-	db 2  ; EU-SM
-	db 2  ; EU-UA
-
-ZipcodeFormatLengths:
-	db 3 ; 0:  - - -
-	db 4 ; 1:  0-9 0-9 0-9 0-9
-	db 5 ; 2:  0-9 0-9 0-9 0-9 0-9
-	db 6 ; 3:  0-9 0-9 0-9 0-9 0-9 0-9
-	db 7 ; 4:  A-Z 0-Z 0-Z 0-Z 0-Z BLANK+A-Z BLANK+A-Z
-	db 7 ; 5:  A-Z 0-9 0-Z 0-Z 0-Z 0-Z 0-Z
-	db 3 ; 6:  0-9 0-9 0-9
-	db 7 ; 7:  A-Z A-Z 0-9 0-9 0-9 0-9 0-9
-	db 6 ; 8:  A-Z A-Z 0-9 0-9 0-9 0-9
-	db 7 ; 9:  A-Z A-Z A-Z 0-9 0-9 0-9 0-9
-	db 6 ; 10: 0-9 0-9 0-9 0-9 A-Z A-Z
-	db 7 ; 11: 0-9 0-9 0-9 0-9 0-9 0-9 0-9
-	db 6 ; 12: S I 0-9 0-9 0-9 0-9
-
-elif !DEF(_CRYSTAL_AU) ; US zone. AU zone has no prefecture-specific zipcode format.
-PrefectureZipcodeFormat:
-	db 0 ; US-AL
-	db 0 ; US-AK
-	db 0 ; US-AZ
-	db 0 ; US-AR
-	db 0 ; US-CA
-	db 0 ; US-CO
-	db 0 ; US-CT
-	db 0 ; US-DE
-	db 0 ; US-FL
-	db 0 ; US-GA
-	db 0 ; US-HI
-	db 0 ; US-ID
-	db 0 ; US-IL
-	db 0 ; US-IN
-	db 0 ; US-IA
-	db 0 ; US-KS
-	db 0 ; US-KY
-	db 0 ; US-LA
-	db 0 ; US-ME
-	db 0 ; US-MD
-	db 0 ; US-MA
-	db 0 ; US-MI
-	db 0 ; US-MN
-	db 0 ; US-MS
-	db 0 ; US-MO
-	db 0 ; US-MT
-	db 0 ; US-NE
-	db 0 ; US-NV
-	db 0 ; US-NH
-	db 0 ; US-NJ
-	db 0 ; US-NM
-	db 0 ; US-NY
-	db 0 ; US-NC
-	db 0 ; US-ND
-	db 0 ; US-OH
-	db 0 ; US-OK
-	db 0 ; US-OR
-	db 0 ; US-PA
-	db 0 ; US-RI
-	db 0 ; US-SC
-	db 0 ; US-SD
-	db 0 ; US-TN
-	db 0 ; US-TX
-	db 0 ; US-UT
-	db 0 ; US-VT
-	db 0 ; US-VA
-	db 0 ; US-WA
-	db 0 ; US-WV
-	db 0 ; US-WI
-	db 0 ; US-WY
-	db 1 ; CA-AB
-	db 1 ; CA-BC
-	db 1 ; CA-MB
-	db 1 ; CA-NB
-	db 1 ; CA-NL
-	db 1 ; CA-NS
-	db 1 ; CA-ON
-	db 1 ; CA-PE
-	db 1 ; CA-QC
-	db 1 ; CA-SK
-	db 1 ; CA-NT
-	db 1 ; CA-NU
-	db 1 ; CA-YT
-
-ZipcodeFormatLengths:
-	db 5 ; 0: 0-9 0-9 0-9 0-9 0-9
-	db 6 ; 1: A-Z 0-9 A-Z 0-9 A-Z 0-9
-endc
-
-Zipcode_CharPools:
-DEF N = ZIPCODE_LENGTH
-IF N > 8
-  FAIL "make the STRSUB longer"
-ENDC
-DEF IDX = 0
-REPT N
-DEF S EQUS STRCAT("Zipcode_CharPoolForStringIndex", STRSUB("01234567", IDX+1, 1))
-	dw S
-PURGE S
-DEF IDX = IDX + 1
-ENDR
-
-Zipcode_CharPoolForStringIndex0:
-if DEF(_CRYSTAL_AU)
-	db "0123456789"
-
-Zipcode_CharPoolForStringIndex1:
-	db "0123456789"
-
-Zipcode_CharPoolForStringIndex2:
-	db "0123456789"
-
-Zipcode_CharPoolForStringIndex3:
-	db "0123456789"
-
-elif DEF(_CRYSTAL_EU)
-	db "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ"
-
-Zipcode_CharPoolForStringIndex1:
-	db "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ"
-
-Zipcode_CharPoolForStringIndex2:
-	db "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ"
-
-Zipcode_CharPoolForStringIndex3:
-	db " 0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ"
-
-Zipcode_CharPoolForStringIndex4:
-	db " 0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ"
-
-Zipcode_CharPoolForStringIndex5:
-	db " 0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ"
-
-Zipcode_CharPoolForStringIndex6:
-	db " 0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ"
-
-else ; US
-	db "0123456789ABCEGHJKLMNPRSTVXY"
-
-Zipcode_CharPoolForStringIndex1:
-	db "0123456789"
-
-Zipcode_CharPoolForStringIndex2:
-	db "0123456789ABCEGHJKLMNPRSTVWXYZ"
-
-Zipcode_CharPoolForStringIndex3:
-	db "0123456789"
-
-Zipcode_CharPoolForStringIndex4:
-	db "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ"
-
-Zipcode_CharPoolForStringIndex5:
-	db " 0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ"
-
-endc
-
-Zipcode_CharPoolsLength:
-DEF N = ZIPCODE_LENGTH
-DEF IDX = 0
-REPT N - 1
-DEF S EQUS STRCAT("LOW(Zipcode_CharPoolForStringIndex", STRSUB("01234567", IDX+2, 1))
-DEF T EQUS STRCAT("- Zipcode_CharPoolForStringIndex", STRSUB("01234567", IDX+1, 1))
-	db S T ) / 1
-PURGE S
-PURGE T
-DEF IDX = IDX + 1
-ENDR
-
-DEF N = ZIPCODE_LENGTH - 1
-DEF S EQUS STRCAT("LOW(Zipcode_CharPoolsLength - Zipcode_CharPoolForStringIndex", STRSUB("01234567", N+1, 1))
-	db S ) / 1
 
 MobileProfileString:         db "  Mobile Profile@"
 MobileString_Gender:         db "Gender@"
@@ -1648,7 +1427,6 @@ endr
 	pop bc
 	pop af
 	call ExitMenu
-	hlcoord 18 - ZIPCODE_LENGTH, 11 ; Zip Code location
 	call DisplayZipCodeRightAlign
 	hlcoord 8, 11 ; Location of a clear box to clear any excess characters if 'Tell Now' is selected, but cannot overlap the position of the zip code itself, because otherwise it will clear that too.
 
@@ -1662,6 +1440,7 @@ endr
 	jp ReturnToMobileProfileMenu
 
 DisplayZipCodeRightAlign:
+	hlcoord 18 - ZIPCODE_LENGTH, 11 ; Zip Code Position in MOBILE menu
 	call CountZipcodeRightBlanks
 	push de
 	ld d, 0
@@ -1674,21 +1453,19 @@ DisplayZipCodeRightAlign:
 	jr DisplayZipCodeWithOffset
 
 ; Input: HL contains the coords (using hlcoord) on the screen of the first char (leftmost) of the zipcode.
-; Output: the number of blanks on the right in B.
+; Output: the number of blanks on the right in B. This is the equivalent of the desired left offset.
 DisplayZipCode:
 	ld b, 0
 DisplayZipCodeWithOffset:
 	push de
 	ld de, 0
-
-.loop
-	push bc
-	ld a, ZIPCODE_LENGTH
+	ld a, [wZipcodeFormatLength]
 	sub b ; Note that B should, must and will always be strictly smaller than ZIPCODE_LENGTH.
 	ld c, a
+
+.loop
 	ld a, e
 	cp c
-	pop bc
 	jr nc, .end_loop
 
 	push hl
@@ -1706,9 +1483,6 @@ DisplayZipCodeWithOffset:
 .end_loop
 	pop de
 	ret
-
-String_48a38:
-	db "-@" ; Unused
 
 TellNowTellLaterMenu:
 	ld hl, MenuHeader_0x48a9c
@@ -1904,11 +1678,33 @@ InputZipcodeCharacters: ; Function48ab5. Zip code menu controls.
 Zipcode_GetCharPoolLengthForGivenCharSlot:
 	push hl
 	push de
-	ld hl, Zipcode_CharPoolsLength
+	push bc
+
+	ld hl, Zipcode_CharPool_Formats
+	ld a, [wZipcodeFormat]
+	add a ; dw
+	ld c, a
+	ld b, 0
+	add hl, bc
+	
+	ld a, [hli]
+	ld h, [hl]
+	ld l, a ; HL now points to the zipcode format structure.
+
 	ld e, d
 	ld d, 0
 	add hl, de
-	ld a, [hl] ; length of the array.
+	ld a, [hl] ; A contains the index of the used charpool.
+
+	ld hl, Zipcode_CharPools + 2 ; HL points to the charpool length list.
+	ld e, a
+	add a
+	add e 
+	ld e, a ; dwb
+	add hl, de
+	ld a, [hl] ; A contains the length of the charpool we are looking for.
+
+	pop bc
 	pop de
 	pop hl
 	ret
@@ -2134,6 +1930,39 @@ Mobile12_MoveAndBlinkCursor:
 	ld [hli], a ; attributes
 	ret
 
+; Input: In A, the char index in the zipcode string between 0 and ZIPCODE_LENGTH.
+; Output: Address in HL.
+; Clobbers DE.
+GetCurCharpoolAddress:
+	push af
+	ld a, [wZipcodeFormat]
+	add a ; dw
+	ld e, a
+	ld d, 0
+	ld hl, Zipcode_CharPool_Formats
+	add hl, de
+
+	ld a, [hli]
+	ld h, [hl]
+	ld l, a
+	pop af
+
+	ld e, a ; db
+	add hl, de ; HL shifted by the index in the charpool (from 0 to ZIPCODE_LENGTH).
+	ld a, [hl] ; A contains the index of the used char pool.
+
+	ld hl, Zipcode_CharPools
+	ld e, a
+	add a
+	add e ; We multiply A by 3, as we are going through a dwb list.
+	ld e, a
+	add hl, de
+
+	ld a, [hli]
+	ld h, [hl]
+	ld l, a ; HL points to the used charpool.
+	ret
+
 ; Output: in A: the number of blank chars at the right of the zipcode.
 CountZipcodeRightBlanks:
 	push hl
@@ -2153,15 +1982,17 @@ CountZipcodeRightBlanks:
 	add a ; We double the index to find its position within the array.
 	ld c, a ; Save the index in C for future use.
 
-	ld hl, Zipcode_CharPools
+	ld a, e
 	push de
-	add hl, de ; Get the char pool for the current zipcode char.
-	pop de
-	ld a, [hli]
-	ld h, [hl]
-	ld l, a ; We have the address of the current char pool in HL.
+	call GetCurCharpoolAddress
+	;pop de
+	;push de
+	;add hl, de ; Get the char pool for the current zipcode char.
+	;ld a, [hli]
+	;ld h, [hl]
+	;ld l, a ; We have the address of the current char pool in HL.
 
-	push de
+	ld d, 0
 	ld e, c ; We retrieve our zipcode char index (already multiplied by 2).
 	add hl, de
 	ld a, [hl] ; A contains the current zipcode char value.
