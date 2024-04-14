@@ -9,7 +9,7 @@ InitMobileProfile:
 	call z, InitCrystalData
 	call ClearBGPalettes
 	call LoadZipcodeWithUniversalFormat
-	call RetrieveZipcodeFormat
+	call RetrieveZipcodeInfo
 	call DisableLCD
 	farcall Mobile22_Clear24FirstOAM
 	;farcall Mobile22_LoadMobileAdapterGFXIntoVRAM
@@ -128,18 +128,25 @@ InitMobileProfile:
 	push bc
 	jr asm_4815f
 
-RetrieveZipcodeFormat:
+RetrieveZipcodeInfo:
 	ld a, [wPrefecture]
 	dec a
 
-	ld hl, PrefectureZipcodeFormat
+	; Country
+	ld hl, PrefectureToCountry
 	ld c, a
 	ld b, 0
-	add hl, bc ; HL contains the address of the format index.
+	add hl, bc
+	ld a, [hl]
+	ld [wZipcodeCountry], a
 
+	; Format
+	ld hl, PrefectureZipcodeFormat
+	add hl, bc ; HL contains the address of the format index.
 	ld a, [hl]
 	ld [wZipcodeFormat], a
 
+	; Length
 	ld hl, ZipcodeFormatLengths
 	ld c, a
 	add hl, bc
@@ -458,25 +465,13 @@ SavePrefectureAndDisplayIt:
 	ld a, [hl]
 	inc a
 	ld [wPrefecture], a
-	dec a
-
-	ld hl, PrefectureZipcodeFormat
-	ld c, a
-	ld b, 0
-	add hl, bc ; HL contains the address of the format index.
-
-	ld a, [wZipcodeFormat]
-	cp [hl]
-	ld a, [hl]
-	ld [wZipcodeFormat], a
-	jr z, .zipcode_reset_managed ; If the previous and current zipcode formats match, there's no need to reset the zipcode.
-
-	; We retrieve the new format length.
-	ld hl, ZipcodeFormatLengths
-	ld c, a
-	add hl, bc
-	ld a, [hl]
-	ld [wZipcodeFormatLength], a
+	
+	ld a, [wZipcodeCountry]
+	ld e, a
+	call RetrieveZipcodeInfo
+	ld a, [wZipcodeCountry]
+	cp e
+	jr z, .zipcode_reset_managed ; If the previous and current zipcode formats match, there's no need to reset the zipcode.	
 
 	; We simulate a press on Tell Later.
 	call TellNowTellLaterMenu.pressed_tell_later
