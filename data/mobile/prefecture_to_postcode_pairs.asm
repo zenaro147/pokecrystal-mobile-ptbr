@@ -75,7 +75,7 @@ PrefectureZipcodeFormat:
 	db 3  ; EU-SE
 	db 12 ; EU-SI
 	db 3  ; EU-SK
-	db 3  ; EU-SM
+	db 13  ; EU-SM
 	db 3  ; EU-UA
 
 ZipcodeFormatLengths:
@@ -92,6 +92,7 @@ ZipcodeFormatLengths:
 	db 6 ; 10:   L     V     0-9   0-9   0-9   0-9
 	db 6 ; 11:   M     D     0-9   0-9   0-9   0-9
 	db 6 ; 12:   S     I     0-9   0-9   0-9   0-9
+	db 5 ; 13:   7  8  9  0-9
 
 
 

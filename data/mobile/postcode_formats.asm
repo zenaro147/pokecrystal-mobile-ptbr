@@ -30,6 +30,7 @@ Zipcode_CharPool_Formats:
 	dw Zipcode_CharPools_Format10
 	dw Zipcode_CharPools_Format11
 	dw Zipcode_CharPools_Format12
+	dw Zipcode_CharPools_Format13
 ;________________________________
 Zipcode_CharPools_Format0:         ; -     -     -
 	db CHARPOOL_DASH
@@ -94,6 +95,13 @@ Zipcode_CharPools_Format12:        ; S     I     0-9   0-9   0-9   0-9
 	db CHARPOOL_0_TO_9
 	db CHARPOOL_0_TO_9
 	db CHARPOOL_0_TO_9
+	db CHARPOOL_0_TO_9
+	
+Zipcode_CharPools_Format13:        ; S     I     0-9   0-9   0-9   0-9
+	db CHARPOOL_4
+	db CHARPOOL_7
+	db CHARPOOL_8
+	db CHARPOOL_9
 	db CHARPOOL_0_TO_9
 
 
