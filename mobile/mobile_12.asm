@@ -1092,7 +1092,6 @@ ZipCodePressed:
 .check_editable_char_loop
 	inc d
 	ld a, [wZipcodeFormatLength]
-	dec a
 	cp d
 	jp z, ZipCodeEditMenu ; None of the chars of this zipcode format are editable (EU-AD only), so we automatically save it and quit.
 	jp c, ZipCodeEditMenu ; None of the chars of this zipcode format are editable (EU-AD only), so we automatically save it and quit.
