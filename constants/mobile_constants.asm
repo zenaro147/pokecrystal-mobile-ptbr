@@ -94,6 +94,6 @@ DEF NUM_REGION_CODES EQU 63
 DEF REGION_CODE_STRING_LENGTH EQU 6
 ENDC
 
-DEF ZIPCODE_MAX_LENGTH EQU 7
+DEF ZIPCODE_MAX_LENGTH EQU 7 ; This is the maximum length on a zipcode, all regions together. It is used as the fixed memory footprint for online communications.
 DEF ZIPCODE_FRAME_RIGHT_MARGIN EQU 1
 DEF REGION_NAME_MAX_LENGTH EQU 7

@@ -1,4 +1,41 @@
-if DEF(_CRYSTAL_EU)
+if DEF(_CRYSTAL_AU) ; AU build.
+PrefectureZipcodeFormat:
+	db 0 ; AU-NSW
+	db 0 ; AU-QLD
+	db 0 ; AU-SA
+	db 0 ; AU-TAS
+	db 0 ; AU-VIC
+	db 0 ; AU-WA
+	db 0 ; AU-ACT
+	db 0 ; AU-NT
+	db 0 ; NZ-AUK
+	db 0 ; NZ-BOP
+	db 0 ; NZ-CAN
+	db 0 ; NZ-CIT
+	db 0 ; NZ-GIS
+	db 0 ; NZ-WGN
+	db 0 ; NZ-HKB
+	db 0 ; NZ-MWT
+	db 0 ; NZ-MBH
+	db 0 ; NZ-NSN
+	db 0 ; NZ-NTL
+	db 0 ; NZ-OTA
+	db 0 ; NZ-STL
+	db 0 ; NZ-TKI
+	db 0 ; NZ-TAS
+	db 0 ; NZ-WKO
+	db 0 ; NZ-WTC
+
+ZipcodeFormatLengths:
+	db 4 ;  0:   0-9   0-9   0-9   0-9
+
+
+
+
+
+
+
+elif DEF(_CRYSTAL_EU) ; EU build.
 PrefectureZipcodeFormat:
 	db 0  ; EU-AD
 	db 2  ; EU-AL
@@ -56,7 +93,13 @@ ZipcodeFormatLengths:
 	db 6 ; 11:   M     D     0-9   0-9   0-9   0-9
 	db 6 ; 12:   S     I     0-9   0-9   0-9   0-9
 
-elif !DEF(_CRYSTAL_AU) ; US zone. AU zone has no prefecture-specific zipcode format.
+
+
+
+
+
+
+else ; US build.
 PrefectureZipcodeFormat:
 	db 0 ; US-AL
 	db 0 ; US-AK

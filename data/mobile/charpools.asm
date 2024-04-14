@@ -36,6 +36,7 @@ Zipcode_CharPools:
 	dwb Zipcode_CharPool_Dash,        1 ; CHARPOOL_DASH
 
 
+
 Zipcode_CharPool_Blank_AtoZ:
 	db " "
 Zipcode_CharPool_Ato9:
@@ -63,6 +64,5 @@ Zipcode_CharPool_8:
 	db "8"
 Zipcode_CharPool_9:
 	db "9"
-
 Zipcode_CharPool_Dash:
 	db "-"
