@@ -478,21 +478,8 @@ SavePrefectureAndDisplayIt:
 	ld a, [hl]
 	ld [wZipcodeFormatLength], a
 
-	; We reset the zipcode to its default value.
-	ld hl, wZipCode
-	ld bc, ZIPCODE_LENGTH
-	xor a
-	call ByteFill ; fill bc bytes with the value of a, starting at hl
-
-	; We select "Tell Later".
-	ld a, [wMobileProfileParametersFilled]
-	res 3, a
-	ld [wMobileProfileParametersFilled], a
-
-	; We tell the UI to refresh.
-	ld a, [wd479]
-	res 0, a
-	ld [wd479], a
+	; We simulate a press on Tell Later.
+	call TellNowTellLaterMenu.pressed_tell_later
 
 .zipcode_reset_managed
 	ld hl, wScrollingMenuCursorPosition
@@ -1349,6 +1336,8 @@ TellNowTellLaterMenu:
 	ld a, [wMenuCursorY]
 	cp $1
 	jr z, .a_pressed ; The player pressed "Tell later".
+	
+.pressed_tell_later
 	ld a, [wMobileProfileParametersFilled]
 	set 3, a
 	ld [wMobileProfileParametersFilled], a
