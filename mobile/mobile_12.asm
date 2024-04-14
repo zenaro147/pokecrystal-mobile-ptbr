@@ -579,31 +579,22 @@ ReturnToMobileProfileMenu:
 	call ClearBox
 	jp Function48157
 
-; Inputs: char pool index in A, left offset in B, screen tile coord in HL.
+; Inputs: char pool index in D, char index (within char pool) in A, left offset in B, screen tile coord in HL.
 Mobile12_Index2CharDisplay:
-	push de
 	push hl
+	push de
 
 	push af
-	ld a, l
-	hlcoord 18 - ZIPCODE_LENGTH, 11
-	ld e, b
-	ld d, 0
-	add hl, de
-
-	; Zip Code Location. Note that wTilemap is added to it. wTilemap is "align 8" ($X00) + $A0. "18 - ZIPCODE_LENGTH, 11" is $E7. Which makes $C587.
-	; The last zipcode char would be stored at address $C58E. The last byte doesn't overflow or underflow between the first and the last chat pos, so we can subtract those to get the index in the string of the current char.
-	sub l ; A now contains the char index in the zipcode string between 0 and ZIPCODE_LENGTH.
-
+	ld a, d
 	call GetCurCharpoolAddress
-
 	pop af
-	ld e, a ; A is the char pool index given as a parameter of this function.
+
+	ld e, a ; A is the char index within the current char pool, given as a parameter of this function.
 	add hl, de
+	pop de
 	ld a, [hl]
 	pop hl
 	ld [hl], a
-	pop de
 	ret
 
 MobileProfileString:         db "  Mobile Profile@"
@@ -1265,10 +1256,29 @@ endr
 	ldh [hInMenu], a
 	jp ReturnToMobileProfileMenu
 
+; Input: B = left offset.
 DisplayZipCodeRightAlign:
-	hlcoord 18 - ZIPCODE_LENGTH, 11 ; Zip Code Position in MOBILE menu
-	call CountZipcodeRightBlanks
 	push de
+	; We first clear the area.
+	hlcoord 18 - ZIPCODE_LENGTH, 11 ; Zip Code Position in MOBILE menu
+	ld a, ZIPCODE_LENGTH
+	ld c, a
+	ld b, 0
+	ld a, " "
+	call ByteFill ; fill bc bytes with the value of a, starting at hl
+	ld b, e
+
+	; Aligning to the right, based on wZipcodeFormatLength.
+	hlcoord 18 - ZIPCODE_LENGTH, 11 ; Zip Code Position in MOBILE menu
+	ld a, [wZipcodeFormatLength]
+    ld b, a
+    ld a, ZIPCODE_LENGTH
+    sub b
+    ld e, a
+    ld d, 0
+    add hl, de ; Shifting HL coord to the right, based on wZipcodeFormatLength. It's so that the zipcode stays aligned to the right.
+
+	call CountZipcodeRightBlanks
 	ld d, 0
 	ld e, a
 	add hl, de
@@ -1278,24 +1288,12 @@ DisplayZipCodeRightAlign:
 
 	jr DisplayZipCodeWithOffset
 
-; Input: HL contains the coords (using hlcoord) on the screen of the first char (leftmost) of the zipcode.
+; Input: HL contains the coords (using hlcoord) on the screen of the first char (leftmost) of the zipcode. B = left offset.
 ; Output: the number of blanks on the right in B. This is the equivalent of the desired left offset.
 DisplayZipCode:
 	ld b, 0
 DisplayZipCodeWithOffset:
 	push de
-
-	; We first clear the area.
-	push hl
-	push bc
-	ld a, ZIPCODE_LENGTH
-	sub b
-	ld c, a
-	ld b, 0
-	ld a, " "
-	call ByteFill ; fill bc bytes with the value of a, starting at hl
-	pop bc
-	pop hl
 
 	ld de, 0
 	ld a, [wZipcodeFormatLength]
@@ -1309,10 +1307,12 @@ DisplayZipCodeWithOffset:
 
 	push hl
 	ld hl, wZipCode
+	ld d, 0
 	add hl, de ; We get the zipcode char offset.
 	ld a, [hl]
 	pop hl
 
+	ld d, e
 	call Mobile12_Index2CharDisplay
 	inc hl
 
