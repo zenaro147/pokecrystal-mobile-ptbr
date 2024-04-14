@@ -1071,7 +1071,6 @@ ZipCodePressed:
 	ld b, $1 ; Zip Code Menu starting point
 	ld c, ZIPCODE_LENGTH + ZIPCODE_FRAME_RIGHT_MARGIN; Zip Code Menu width
 	call DisplayBlankGoldenBox
-	ld d, $0
 	hlcoord 18 - ZIPCODE_LENGTH, 11 ; Zip Code Position
 	call DisplayZipCode
 	call WaitBGMap
@@ -1095,21 +1094,35 @@ ZipCodePressed:
 	ld b, a
 	ld c, 0
 	push bc
-	ld d, $0
+	
+	; We look for the starting char index. We skip all non-editable chars (those with a charpool length of 1 or 0).
 	ld b, $0
+	ld d, -1
+.check_editable_char_loop
+	inc d
+	ld a, [wZipcodeFormatLength]
+	dec a
+	cp d
+	jp z, ZipCodeEditMenu ; None of the chars of this zipcode format are editable (EU-AD only), so we automatically save it and quit.
+	jp c, ZipCodeEditMenu ; None of the chars of this zipcode format are editable (EU-AD only), so we automatically save it and quit.
+
+	call Zipcode_GetCharPoolLengthForGivenCharSlot
+	cp 2
+	jr c, .check_editable_char_loop
+
 
 ZipCodeEditMenu:
 	push bc
 	call JoyTextDelay
 	ldh a, [hJoyDown]
 	and a
-	jp z, Function4896e ; If no button is pressed, jump to Function4896e.
+	jp z, InputZipcodeCharacters_B0 ; If no button is pressed, jump to InputZipcodeCharacters_B0.
 
 	bit A_BUTTON_F, a
-	jp nz, Function4896e ; If button A is pressed, jump to Function4896e.
+	jp nz, InputZipcodeCharacters_B0 ; If button A is pressed, jump to InputZipcodeCharacters_B0.
 
 	bit B_BUTTON_F, a
-	jp nz, Function4896e ; If button B is pressed, jump to Function4896e.
+	jp nz, InputZipcodeCharacters_B0 ; If button B is pressed, jump to InputZipcodeCharacters_B0.
 
 	ld a, [wd002]
 	and %11001111
@@ -1136,26 +1149,7 @@ ZipCodeEditMenu:
 	call DelayFrames
 	jr asm_48972
 
-Function4895a: ; unreferenced
-	ldh a, [hJoyPressed]
-	and a
-	jr z, .asm_48965
-
-	pop bc
-	ld b, $1
-	push bc
-	jr asm_48972
-
-.asm_48965
-	ldh a, [hJoyLast]
-	and a
-	jr z, asm_48972
-
-	pop bc
-	ld b, $1
-	push bc
-
-Function4896e:
+InputZipcodeCharacters_B0:
 	pop bc
 	ld b, $0
 	push bc
@@ -1326,22 +1320,6 @@ DisplayZipCodeWithOffset:
 	jr .loop
 
 .end_loop
-	;ld a, [wZipcodeFormatLength]
-	;add b
-	;sub ZIPCODE_LENGTH
-	;jr nc, .pad_right_with_blanks
-
-;	ld a, [wZipcodeFormatLength]
-;	sub ZIPCODE_LENGTH
-;	jr z, .pad_right_with_blanks
-;
-;.pad_right_with_blanks
-;	ld [hl], " "
-;	inc hl
-;	inc a
-;	jr nz, .pad_right_with_blanks
-
-.pad_right_with_blanks_done
 	pop de
 	ret
 
@@ -1510,15 +1488,22 @@ InputZipcodeCharacters: ; Function48ab5. Zip code menu controls.
 	ld c, ZIPCODE_LENGTH + ZIPCODE_FRAME_RIGHT_MARGIN; Zip Code Menu width
 	call DisplayBlankGoldenBox
 	pop de
-	ld a, d
-	and a
 	pop af
 	pop hl
 	ld b, a
 	ld a, d
 	and a
-	ld a, b
 	jr z, .asm_48bf3
+
+	dec d ; We know that D isn't zero, so decreasing won't underflow.
+	call Zipcode_GetCharPoolLengthForGivenCharSlot ; Doesn't clobber B.
+	inc d ; We cancel the decrease.
+	and a
+	jr z, .asm_48bf3
+	cp 1
+	jr z, .asm_48bf3
+
+	ld a, b
 	bit 7, a
 	jr z, .asm_48bf8
 	dec d
