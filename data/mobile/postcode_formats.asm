@@ -64,14 +64,14 @@ Zipcode_CharPools_Format7:         ; A-Z   0-9   0-Z   0-Z   0-Z   0-Z   0-Z
 	db CHARPOOL_A_TO_9
 	db CHARPOOL_A_TO_9
 
-Zipcode_CharPools_Format8:         ; A-Z   0-Z   0-Z   0-Z   0-Z   Blank+A-Z   Blank+A-Z
+Zipcode_CharPools_Format8:         ; A-Z   0-Z   0-Z   0-Z   0-Z   A-Z_Blank   A-Z+Blank
 	db CHARPOOL_A_TO_Z
 	db CHARPOOL_A_TO_9
 	db CHARPOOL_A_TO_9
 	db CHARPOOL_A_TO_9
 	db CHARPOOL_A_TO_9
-	db CHARPOOL_BLANK_A_TO_Z
-	db CHARPOOL_BLANK_A_TO_Z
+	db CHARPOOL_A_TO_Z_BLANK
+	db CHARPOOL_A_TO_Z_BLANK
 
 Zipcode_CharPools_Format10:        ; L     V     0-9   0-9   0-9   0-9
 	db CHARPOOL_L

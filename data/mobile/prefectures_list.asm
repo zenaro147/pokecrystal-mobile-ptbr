@@ -1,40 +1,13 @@
-Prefectures: ; Some names shortened to fit, check for official initials later. In this list, strings must be right-aligned.
 if DEF(_CRYSTAL_AU)
+Prefectures: ; Quick and dirty solution for the margin offset. In this list, strings must be left-aligned.
 	db "AU-NSW@"      ; New South Wales
 	db "AU-QLD@"      ; Queensland	
-	db " AU-SA@"       ; South Australia	
+	db "AU-SA @"       ; South Australia	
 	db "AU-TAS@"      ; Tasmania	
 	db "AU-VIC@"      ; Victoria	
-	db " AU-WA@"       ; Western Australia	
+	db "AU-WA @"       ; Western Australia	
 	db "AU-ACT@"      ; Australian Capital Territory
-	db " AU-NT@"       ; Northern Territory
-	db "NZ-AUK@"      ; Auckland
-	db "NZ-BOP@"      ; Bay of Plenty
-	db "NZ-CAN@"      ; Canterbury
-	db "NZ-CIT@"      ; Chatham Islands Territory
-	db "NZ-GIS@"      ; Gisborne
-	db "NZ-WGN@"      ; Wellington	
-	db "NZ-HKB@"      ; Hawke's Bay
-	db "NZ-MWT@"      ; Manawatu-Wanganui	
-	db "NZ-MBH@"      ; Marlborough
-	db "NZ-NSN@"      ; Nelson
-	db "NZ-NTL@"      ; Northland
-	db "NZ-OTA@"      ; Otago
-	db "NZ-STL@"      ; Southland
-	db "NZ-TKI@"      ; Taranaki	
-	db "NZ-TAS@"      ; Tasman
-	db "NZ-WKO@"      ; Waikato
-	db "NZ-WTC@"      ; West Coast
-
-PrefecturesScrollList: ; Quick and dirty solution for the margin offset. In this list, strings must be left-aligned.
-	db "AU-NSW@"      ; New South Wales
-	db "AU-QLD@"      ; Queensland	
-	db "AU-SA@"       ; South Australia	
-	db "AU-TAS@"      ; Tasmania	
-	db "AU-VIC@"      ; Victoria	
-	db "AU-WA@"       ; Western Australia	
-	db "AU-ACT@"      ; Australian Capital Territory
-	db "AU-NT@"       ; Northern Territory
+	db "AU-NT @"       ; Northern Territory
 	db "NZ-AUK@"      ; Auckland
 	db "NZ-BOP@"      ; Bay of Plenty
 	db "NZ-CAN@"      ; Canterbury
@@ -54,6 +27,7 @@ PrefecturesScrollList: ; Quick and dirty solution for the margin offset. In this
 LastPrefecture: db "NZ-WTC@"      ; West Coast
 
 elif DEF(_CRYSTAL_EU)
+Prefectures:
 	db "EU-AD@"     ; Andorra
 	db "EU-AL@"     ; Albania
 	db "EU-AT@"     ; Austria
@@ -95,6 +69,7 @@ elif DEF(_CRYSTAL_EU)
 	db "EU-SM@"     ; San Marino
 LastPrefecture: db "EU-UA@"     ; Ukraine
 else
+Prefectures:
 	db	"US-AL@"  	;Alabama
 	db	"US-AK@"  	;Alaska
 	db	"US-AZ@"  	;Arizona
