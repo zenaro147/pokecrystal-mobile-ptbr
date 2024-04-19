@@ -7279,8 +7279,7 @@ Function11b31b:
 	dbpixel  9,  7,  0, 7 ;  0
 	dbpixel  9,  8,  0, 7 ;  1
 	dbpixel  9,  9,  0, 6 ;  2
-	dbpixel  9,  10,  0, 6 ; 3	
-	
+	dbpixel  9,  10,  0, 6 ; 3
 	
 	dbpixel  9, 14,  0, 9 ;  4
 	dbpixel  9, 15,  0, 9 ;  5
@@ -7314,7 +7313,7 @@ Function11b31b:
 	db $41 ; 10
 	db $4E ; 11
 	
-	db $4F ; 12	
+	db $4F ; 12
 	db $41 ; 13
 	db $41 ; 14
 	db $42 ; 15
@@ -7323,12 +7322,14 @@ Function11b31b:
 	db $30 ;  0
 	db $31 ;  1
 	db $31 ;  2
+	db $31 ;  4	
 	db $39 ;  3
 	db $39 ;  4
 	db $39 ;  5
 	db $39 ;  6
 	db $40 ;  7
 	db $41 ;  8
+	db $41 ;  9
 	db $41 ;  9
 	db $39 ; 10
 	db $39 ; 11
@@ -7350,6 +7351,8 @@ Function11b31b:
 	db $39 ; 11
 	db $39 ; 12
 	db $39 ; 13
+	db $39 ; 12
+	db $39 ; 13	
 
 Function11b397:
 	ld de, wShadowOAMSprite00
