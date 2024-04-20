@@ -7291,32 +7291,24 @@ Function11b31b:
 	dbpixel 10, 15,  6, 9 ; 13
 	dbpixel 10, 17,  6, 0 ; 14
 	dbpixel 10, 18,  6, 0 ; 15
-
-	dbpixel  9,  10, 0, 6 ; 3
-	dbpixel  9, 14,  0, 9 ;  4
-	dbpixel 10,  10, 6, 6 ; 11
 	db -1
 
 .Tilemap1: ; vtiles
 	db $30 ;  0
 	db $31 ;  1
-	db $31 ;  2
+	db $4C ;  3	
 	
-	db $31 ;  5
+	db $4D ;  4	
 	db $31 ;  6
 	db $32 ;  7
 	
 	db $40 ;  8
 	db $41 ;  9
-	db $41 ; 10
-	
-	db $41 ; 13
+	db $4E ; 11
+
+	db $4F ; 12
 	db $41 ; 14
 	db $42 ; 15
-	db $4C ;  3	
-	db $4D ;  4	
-	db $4E ; 11	
-	db $4F ; 12	
 
 .Tilemap2: ; vtiles
 	db $30 ;  0
