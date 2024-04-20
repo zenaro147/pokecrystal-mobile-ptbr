@@ -6234,32 +6234,32 @@ Function11acb7: ; mobile phone animation?
 	sla c
 	rl b
 	add hl, bc
-	decoord 5, 12 ;6, 6
+	decoord 1, 12 ;6, 6
 	ld a, [hli]
 	ld [de], a
-	decoord 4, 6 ;0, 7
+	decoord 2, 6 ;0, 7
 	;ld bc, 7
 	;call CopyBytes
 
 	; vertical
 	ld a, [hli]
 	ld [de], a
-	decoord 4, 7
+	decoord 2, 7
 	ld a, [hli]
 	ld [de], a
-	decoord 4, 8
+	decoord 2, 8
 	ld a, [hli]
 	ld [de], a
-	decoord 4, 9
+	decoord 2, 9
 	ld a, [hli]
 	ld [de], a
-	decoord 4, 10
+	decoord 2, 10
 	ld a, [hli]
 	ld [de], a
-	decoord 4, 11
+	decoord 2, 11
 	ld a, [hli]
 	ld [de], a
-	decoord 4, 12
+	decoord 2, 12
 	ld a, [hli]
 	ld [de], a
 
@@ -6284,29 +6284,29 @@ Function11acb7: ; mobile phone animation?
 	sla c
 	rl b
 	add hl, bc
-	decoord 2, 8 ;3, 9 ; wanted pokemon animation coordinates
+	decoord 4, 8 ;3, 9 ; wanted pokemon animation coordinates
 	;ld bc, 7
 	;call CopyBytes
 
 	; vertical
 	ld a, [hli]
 	ld [de], a
-	decoord 2, 9
+	decoord 4, 9
 	ld a, [hli]
 	ld [de], a
-	decoord 2, 10
+	decoord 4, 10
 	ld a, [hli]
 	ld [de], a
-	decoord 2, 11
+	decoord 4, 11
 	ld a, [hli]
 	ld [de], a
-	decoord 2, 12
+	decoord 4, 12
 	ld a, [hli]
 	ld [de], a
-	decoord 2, 13
+	decoord 4, 13
 	ld a, [hli]
 	ld [de], a
-	decoord 2, 14
+	decoord 4, 14
 	ld a, [hli]
 	ld [de], a
 
@@ -7279,9 +7279,7 @@ Function11b31b:
 	dbpixel  9,  7,  0, 7 ;  0
 	dbpixel  9,  8,  0, 7 ;  1
 	dbpixel  9,  9,  0, 6 ;  2
-	dbpixel  9,  10,  0, 6 ; 3
 	
-	dbpixel  9, 14,  0, 9 ;  4
 	dbpixel  9, 15,  0, 9 ;  5
 	dbpixel  9, 17,  0, 0 ;  6
 	dbpixel  9, 18,  0, 0 ;  7
@@ -7289,21 +7287,21 @@ Function11b31b:
 	dbpixel 10,  7,  6, 7 ;  8
 	dbpixel 10,  8,  6, 7 ;  9
 	dbpixel 10,  9,  6, 6 ; 10
-	dbpixel 10,  10, 6, 6 ; 11
 	
-	dbpixel 10, 14,  6, 9 ; 12
 	dbpixel 10, 15,  6, 9 ; 13
 	dbpixel 10, 17,  6, 0 ; 14
 	dbpixel 10, 18,  6, 0 ; 15
+
+	dbpixel  9,  10, 0, 6 ; 3
+	dbpixel  9, 14,  0, 9 ;  4
+	dbpixel 10,  10, 6, 6 ; 11
 	db -1
 
 .Tilemap1: ; vtiles
 	db $30 ;  0
 	db $31 ;  1
 	db $31 ;  2
-	db $4C ;  3
 	
-	db $4D ;  4
 	db $31 ;  5
 	db $31 ;  6
 	db $32 ;  7
@@ -7311,12 +7309,14 @@ Function11b31b:
 	db $40 ;  8
 	db $41 ;  9
 	db $41 ; 10
-	db $4E ; 11
 	
-	db $4F ; 12
 	db $41 ; 13
 	db $41 ; 14
 	db $42 ; 15
+	db $4C ;  3	
+	db $4D ;  4	
+	db $4E ; 11	
+	db $4F ; 12	
 
 .Tilemap2: ; vtiles
 	db $30 ;  0
