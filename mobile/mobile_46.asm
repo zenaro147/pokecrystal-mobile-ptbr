@@ -7422,7 +7422,7 @@ Function11b3d9:
 	cp e
 	jr z, .skip
 	ld hl, 0
-	ld bc, $70
+	ld bc, $79
 	call AddNTimes
 	ld e, l
 	ld d, h
@@ -7444,7 +7444,7 @@ Function11b3d9:
 	jr .loop1
 
 .skip
-	ld b, 14 * TILE_WIDTH
+	ld b, 15 * TILE_WIDTH
 
 .load_sprites
 	ld a, 2 * TILE_WIDTH + 5
