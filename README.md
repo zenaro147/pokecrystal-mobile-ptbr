@@ -20,7 +20,7 @@ https://github.com/Sudel-Matze/pokecrystal
 ![image](https://github.com/gb-mobile/pokecrystal-mobile-eng/assets/110418063/a2753b55-920e-4ed9-bcc4-913655fdc87e)
 ![image](https://github.com/gb-mobile/pokecrystal-mobile-eng/assets/110418063/6c3f6fe9-9362-4f07-b5bf-f1ae785febf9)
 ![image](https://github.com/gb-mobile/pokecrystal-mobile-eng/assets/110418063/3f056306-7409-4c91-8c84-eb046ef6ba11)
-![image](https://github.com/gb-mobile/pokecrystal-mobile-eng/assets/110418063/38033223-f67e-49d4-819a-5cb033bc69c4)
+![image](https://github.com/gb-mobile/pokecrystal-mobile-eng/assets/110418063/5cdd65ee-700d-4921-924a-c55ea29bc2ce)
 ![image](https://github.com/gb-mobile/pokecrystal-mobile-eng/assets/110418063/4942f0e5-8599-4bfb-a149-b06d487d29c7)
 ![image](https://github.com/gb-mobile/pokecrystal-mobile-eng/assets/110418063/1349bf82-7668-4573-8dce-021792013571)
 ![image](https://github.com/gb-mobile/pokecrystal-mobile-eng/assets/110418063/46af69c9-da9f-4656-90e4-e46cc5aec4b2)
