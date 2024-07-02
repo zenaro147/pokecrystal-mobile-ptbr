@@ -5766,7 +5766,7 @@ String_11a743:
     next "stored data!@";"あります！@"
 	
 String_11a755:
-    db   "Read the data?";"データ<WO>よみこみますか？@"
+    db   "Read the data?@";"データ<WO>よみこみますか？@"
 	
 String_11a762:
     db   "Read the same";"おなじ　データ<WO>よみこんだ"
