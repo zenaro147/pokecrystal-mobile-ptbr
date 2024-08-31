@@ -122,7 +122,7 @@ InitMobileProfile:
 	ld d, h
 	ld e, l
 	if DEF(_CRYSTAL_AU)
-	hlcoord 16 - REGION_CODE_STRING_LENGTH, 9 ; Default Prefectures position in MOBILE menu
+	hlcoord 18 - REGION_CODE_STRING_LENGTH, 9 ; Default Prefectures position in MOBILE menu
 	elif DEF(_CRYSTAL_EU)
 	hlcoord 16 - REGION_CODE_STRING_LENGTH, 9 ; Default Prefectures position in MOBILE menu
 	else
@@ -250,7 +250,7 @@ Mobile12_ClearBlankUserParameters:
 	jr nz, .asm_481db
 	lb bc, 1, 8
 	if DEF(_CRYSTAL_AU)
-	hlcoord 11, 9 ; prefecture position
+	hlcoord 10, 9 ; prefecture position
 	elif DEF(_CRYSTAL_EU)
 	hlcoord 10, 9 ; prefecture position
 	else
@@ -568,7 +568,7 @@ SavePrefectureAndDisplayIt:
 	if DEF(_CRYSTAL_AU)
 	hlcoord 11, 8 ; ??? Clears the surrounding tiles when prefecture is selected, needs to be moved with preferectures
 	call ClearBox
-	hlcoord 19 - REGION_CODE_STRING_LENGTH, 9 ; Prefectures position when selected
+	hlcoord 18 - REGION_CODE_STRING_LENGTH, 9 ; Prefectures position when selected
 	elif DEF(_CRYSTAL_EU)
 	hlcoord 9, 8 ; ??? Clears the surrounding tiles when prefecture is selected, needs to be moved with preferectures
 	call ClearBox
