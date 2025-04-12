@@ -53,6 +53,7 @@ The EUR Version covers all countries in Europe (as of 2001).
 The AUS Version covers Australia & New Zealand.
 
 Other languages can be found here:
+
 https://github.com/gb-mobile/pokecrystal-mobile-fra
 
 https://github.com/gb-mobile/pokecrystal-mobile-ger
