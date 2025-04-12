@@ -54,8 +54,11 @@ The AUS Version covers Australia & New Zealand.
 
 Other languages can be found here:
 https://github.com/gb-mobile/pokecrystal-mobile-fra
+
 https://github.com/gb-mobile/pokecrystal-mobile-ger
+
 https://github.com/gb-mobile/pokecrystal-mobile-spa
+
 https://github.com/gb-mobile/pokecrystal-mobile-ita
 
 ## Using Mobile Adapter Features
