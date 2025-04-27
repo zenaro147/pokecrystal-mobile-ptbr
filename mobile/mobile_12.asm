@@ -560,6 +560,8 @@ SavePrefectureAndDisplayIt:
 	cp e
 	jr z, .zipcode_reset_managed ; If the previous and current zipcode formats match, there's no need to reset the zipcode.	
 
+	; Special case: when starting a New Game, the zipcode should stay blank if it is blank.
+	;ld a, [wSavedAtLeastOnce]
 	; We simulate a press on Tell Later.
 	call TellNowTellLaterMenu.pressed_tell_later
 
