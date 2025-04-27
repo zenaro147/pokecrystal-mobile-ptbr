@@ -561,7 +561,16 @@ SavePrefectureAndDisplayIt:
 	jr z, .zipcode_reset_managed ; If the previous and current zipcode formats match, there's no need to reset the zipcode.	
 
 	; Special case: when starting a New Game, the zipcode should stay blank if it is blank.
+	; The zipcode will only change when the player interacts with it.
 	;ld a, [wSavedAtLeastOnce]
+	;and a
+	;jr nz, .tell_later ; If there's already a save, it means we aren't in the "New Game" menu. So we apply the normal behaviour.
+	
+	ld a, [wMobileProfileParametersFilled]
+	bit 3, a
+	jr z, .zipcode_reset_managed ; If the zipcode is blank, we don't change it.
+
+.tell_later
 	; We simulate a press on Tell Later.
 	call TellNowTellLaterMenu.pressed_tell_later
 
