@@ -843,6 +843,9 @@ DisplayInitializedMobileProfileLayout: ; Clears the 4 top lines, displays the "M
 	ld b, $8
 	ld c, $12
 	call DisplayBlankGoldenBox
+	ld a, [wMobileProfileParametersFilled]
+	bit 3, a
+	ret z
 	hlcoord 8, 7 ; Placement of Age Colon Text
 	ld de, Colon
 	call PlaceString
