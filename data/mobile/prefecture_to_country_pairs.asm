@@ -1,0 +1,27 @@
+PrefectureToCountry:
+	db 0 ; BR-AC
+	db 0 ; BR-AL
+	db 0 ; BR-AP
+	db 0 ; BR-AM
+	db 0 ; BR-BA
+	db 0 ; BR-CE
+	db 0 ; BR-ES
+	db 0 ; BR-GO
+	db 0 ; BR-MA
+	db 0 ; BR-MT
+	db 0 ; BR-MS
+	db 0 ; BR-MG
+	db 0 ; BR-PA
+	db 0 ; BR-PB
+	db 0 ; BR-PR
+	db 0 ; BR-PE
+	db 0 ; BR-PI
+	db 0 ; BR-RJ
+	db 0 ; BR-RN
+	db 0 ; BR-RS
+	db 0 ; BR-RO
+	db 0 ; BR-RR
+	db 0 ; BR-SC
+	db 0 ; BR-SP
+	db 0 ; BR-SE
+	db 0 ; BR-TO
