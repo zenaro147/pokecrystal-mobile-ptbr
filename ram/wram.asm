@@ -131,7 +131,9 @@ wUnusedScriptByte:: db
 
 wMapTimeOfDay:: db
 
-	ds 3
+	ds 2
+
+wZipcodeMultipleNonConsecutiveSpace:: db
 
 wPrinterConnectionOpen:: db
 wPrinterOpcode:: db
@@ -2951,7 +2953,10 @@ wTimeCyclesSinceLastCall:: db
 wReceiveCallDelay_MinsRemaining:: db
 wReceiveCallDelay_StartTime:: ds 3
 
-	ds 3
+wZipcodeCountry::db ; Stores the country of the current address/prefecture, in order to reset the zipcode when a new country is selected.
+wZipcodeFormat:: db ; Stores the index of the char pool to use.
+wZipcodeFormatLength:: db ; ZIPCODE_LENGTH is the max length, and wZipcodeFormatLength is the max length of the current format, which is <= to ZIPCODE_LENGTH.
+
 
 wBugContestMinsRemaining:: db
 wBugContestSecsRemaining:: db
@@ -2961,7 +2966,7 @@ wBugContestSecsRemaining:: db
 wMapStatusEnd::
 
 ;	ds 1 ; Moved to wZipCode.
-ds 1
+	ds 1
 
 wCrystalData::
 wPlayerGender::
