@@ -227,7 +227,7 @@ if DEF(_DEBUG)
 	jp StatsScreen_JoypadAction
 
 .HatchSoonString:
-	db "▶HATCH SOON!@"
+	db "▶CHOCA EM BREVE!@"
 endc
 
 StatsScreen_LoadPage:
@@ -643,7 +643,7 @@ LoadPinkPage:
 	hlcoord 10, 12
 	call PlaceString
 	ld de, .ToStr
-	hlcoord 14, 14
+	hlcoord 12, 14
 	call PlaceString
 	hlcoord 11, 16
 	ld a, [wTempMonLevel]
@@ -700,20 +700,20 @@ LoadPinkPage:
 	ret
 
 .Status_Type:
-	db   "STATUS/"
-	next "TYPE/@"
+	db   "ESTADO/";SITUAÇÃO/
+	next "TIPO/@"
 
 .OK_str:
 	db "OK @"
 
 .ExpPointStr:
-	db "EXP POINTS@"
+	db "PONTOS EXP@"
 
 .LevelUpStr:
-	db "LEVEL UP@"
+	db "FALTA:@"
 
 .ToStr:
-	db "TO@"
+	db "PARA@"
 
 .PkrsStr:
 	db "#RUS@"
@@ -761,7 +761,7 @@ LoadGreenPage:
 	db "---@"
 
 .Move:
-	db "MOVE@"
+	db "GOLPES@"
 
 LoadBluePage:
 	call .PlaceOTInfo
@@ -818,10 +818,10 @@ LoadBluePage:
 	dw wBufferMonOT
 
 IDNoString:
-	db "<ID>№.@"
+	db "<ID>№.@";№.<ID>@
 
 OTString:
-	db "OT/@"
+	db "TO/@"
 
 StatsScreen_PlaceFrontpic:
 	ld hl, wTempMonDVs
@@ -1017,7 +1017,7 @@ if DEF(_DEBUG)
 	jr .placed_push_start
 
 .PushStartString:
-	db "▶PUSH START.@"
+	db "▶APERTE START.@"
 
 .placed_push_start
 endc
@@ -1052,7 +1052,7 @@ endc
 	ret
 
 EggString:
-	db "EGG@"
+	db "OVO@"
 
 FiveQMarkString:
 	db "?????@"

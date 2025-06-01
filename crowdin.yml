@@ -1,0 +1,10 @@
+files:
+  - source: '*.asm'
+    ignore:
+      - /audio
+      - /gfx
+      - /ram
+      - /lib
+      - /includes.asm
+      - /vc
+    translation: /traducao/%two_letters_code%/%original_path%/%original_file_name%

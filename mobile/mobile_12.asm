@@ -288,7 +288,7 @@ Mobile12_ClearBlankUserParameters:
 	ret
 
 .String_TellLater:
-	db "Tell Later@"
+	db "Depois@"
 
 MobileProfileOptionPressed:
 	call PlaceHollowCursor
@@ -345,7 +345,7 @@ Function48272:
 	jp ReturnToMobileProfileMenu
 
 MobileString_PersonalInfo:
-	db "Personal Info@"
+	db "Seu Perfil@"
 
 ClearMobileProfileBottomTextBox:
 	lb bc, 2, 18
@@ -690,29 +690,18 @@ Mobile12_Index2Char:
 	pop hl
 	ret
 
-MobileProfileString:         db "  Mobile Profile@"
-MobileString_Gender:         db "Gender@"
-MobileString_Age:            db "Age@"
-MobileString_Address:        db "Address@"
-	if DEF(_CRYSTAL_AU)
-MobileString_ZipCode:        db "Postcode@"
-	elif DEF(_CRYSTAL_EU)
-MobileString_ZipCode:        db "Postcode@"
-	else
-MobileString_ZipCode:        db "Zip Code@"
-	endc
+MobileProfileString:         db "  Perfil Mobile@"
+MobileString_Gender:         db "Sexo@"
+MobileString_Age:            db "Idade@"
+MobileString_Address:        db "Região@"
+MobileString_ZipCode:        db "CEP@"
 MobileString_OK:             db "OK@"
+
 MobileString_ProfileChanged: db "Profile Changed@"
 MobileDesc_Gender:           db "Boy or girl?@"
 MobileDesc_Age:              db "How old are you?@"
 MobileDesc_Address:          db "Where do you live?@"
-	if DEF(_CRYSTAL_AU)
-MobileDesc_ZipCode:          db "Your post code?@"
-	elif DEF(_CRYSTAL_EU)
-MobileDesc_ZipCode:          db "Your post code?@"
-	else
 MobileDesc_ZipCode:          db "Your zip code?@"
-	endc
 
 MenuHeader_0x484f1:
 	db MENU_BACKUP_TILES ; flags
