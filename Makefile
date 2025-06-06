@@ -146,6 +146,8 @@ endef
 # Dependencies for shared objects objects
 $(foreach obj, $(pokecrystal_obj), $(eval $(call DEP,$(obj),$(obj:.o=.asm))))
 $(foreach obj, $(pokecrystal11_obj), $(eval $(call DEP,$(obj),$(obj:11.o=.asm))))
+$(foreach obj, $(pokecrystal_au_obj), $(eval $(call DEP,$(obj),$(obj:_au.o=.asm))))
+$(foreach obj, $(pokecrystal_eu_obj), $(eval $(call DEP,$(obj),$(obj:_eu.o=.asm))))
 $(foreach obj, $(pokecrystal_debug_obj), $(eval $(call DEP,$(obj),$(obj:_debug.o=.asm))))
 $(foreach obj, $(pokecrystal11_debug_obj), $(eval $(call DEP,$(obj),$(obj:11_debug.o=.asm))))
 $(foreach obj, $(pokecrystal11_vc_obj), $(eval $(call DEP,$(obj),$(obj:11_vc.o=.asm))))
@@ -157,11 +159,13 @@ $(foreach obj, $(pokecrystal11_vc_obj), $(eval $(call DEP,$(obj),$(obj:11_vc.o=.
 endif
 
 
-pokecrystal_opt         = -Cjv -t PM_CRYSTAL -i BXTZ -n 0 -k 01 -l 0x33 -m 0x10 -r 5 -p 0
-pokecrystal11_opt       = -Cjv -t PM_CRYSTAL -i BXTZ -n 1 -k 01 -l 0x33 -m 0x10 -r 5 -p 0
-pokecrystal_debug_opt   = -Cjv -t PM_CRYSTAL -i BXTZ -n 0 -k 01 -l 0x33 -m 0x10 -r 5 -p 0
-pokecrystal11_debug_opt = -Cjv -t PM_CRYSTAL -i BXTZ -n 1 -k 01 -l 0x33 -m 0x10 -r 5 -p 0
-pokecrystal11_vc_opt    = -Cjv -t PM_CRYSTAL -i BXTZ -n 1 -k 01 -l 0x33 -m 0x10 -r 5 -p 0
+pokecrystal_opt         = -Cjv -t PM_CRYSTAL -i BXTE -n 0 -k 01 -l 0x33 -m 0x10 -r 5 -p 0
+pokecrystal11_opt       = -Cjv -t PM_CRYSTAL -i BXTE -n 1 -k 01 -l 0x33 -m 0x10 -r 5 -p 0
+pokecrystal_au_opt      = -Cjv -t PM_CRYSTAL -i BXTU -n 0 -k 01 -l 0x33 -m 0x10 -r 5 -p 0
+pokecrystal_eu_opt      = -Cjv -t PM_CRYSTAL -i BXTP -n 0 -k 01 -l 0x33 -m 0x10 -r 5 -p 0
+pokecrystal_debug_opt   = -Cjv -t PM_CRYSTAL -i BXTE -n 0 -k 01 -l 0x33 -m 0x10 -r 5 -p 0
+pokecrystal11_debug_opt = -Cjv -t PM_CRYSTAL -i BXTE -n 1 -k 01 -l 0x33 -m 0x10 -r 5 -p 0
+pokecrystal11_vc_opt    = -Cjv -t PM_CRYSTAL -i BXTE -n 1 -k 01 -l 0x33 -m 0x10 -r 5 -p 0
 
 %.gbc: $$(%_obj) layout.link
 	$(RGBLINK) -n $*.sym -m $*.map -l layout.link -o $@ $(filter %.o,$^)
