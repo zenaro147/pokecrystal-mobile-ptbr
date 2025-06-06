@@ -1,6 +1,8 @@
 roms := \
 	pokecrystal.gbc \
 	pokecrystal11.gbc \
+	pokecrystal_au.gbc \
+	pokecrystal_eu.gbc \
 	pokecrystal_debug.gbc \
 	pokecrystal11_debug.gbc
 patches := pokecrystal11.patch
@@ -26,6 +28,8 @@ rom_obj := \
 
 pokecrystal_obj         := $(rom_obj:.o=.o)
 pokecrystal11_obj       := $(rom_obj:.o=11.o)
+pokecrystal_au_obj      := $(rom_obj:.o=_au.o)
+pokecrystal_eu_obj      := $(rom_obj:.o=_eu.o)
 pokecrystal_debug_obj   := $(rom_obj:.o=_debug.o)
 pokecrystal11_debug_obj := $(rom_obj:.o=11_debug.o)
 pokecrystal11_vc_obj    := $(rom_obj:.o=11_vc.o)
@@ -57,6 +61,8 @@ RGBLINK ?= $(RGBDS)rgblink
 all: crystal
 crystal:         pokecrystal.gbc
 crystal11:       pokecrystal11.gbc
+crystal_au:      pokecrystal_au.gbc
+crystal_eu:      pokecrystal_eu.gbc
 crystal_debug:   pokecrystal_debug.gbc
 crystal11_debug: pokecrystal11_debug.gbc
 crystal11_vc:    pokecrystal11.patch
@@ -88,6 +94,8 @@ tidy:
 	      $(pokecrystal_obj) \
 	      $(pokecrystal11_obj) \
 	      $(pokecrystal11_vc_obj) \
+	      $(pokecrystal_au_obj) \
+		  $(pokecrystal_eu_obj) \
 	      $(pokecrystal_debug_obj) \
 	      $(pokecrystal11_debug_obj) \
 	      rgbdscheck.o
@@ -108,6 +116,8 @@ endif
 
 $(pokecrystal_obj):         RGBASMFLAGS +=
 $(pokecrystal11_obj):       RGBASMFLAGS += -D _CRYSTAL11
+$(pokecrystal_au_obj):      RGBASMFLAGS += -D _CRYSTAL11 -D _CRYSTAL_AU
+$(pokecrystal_eu_obj):      RGBASMFLAGS += -D _CRYSTAL11 -D _CRYSTAL_EU
 $(pokecrystal_debug_obj):   RGBASMFLAGS += -D _DEBUG
 $(pokecrystal11_debug_obj): RGBASMFLAGS += -D _CRYSTAL11 -D _DEBUG
 $(pokecrystal11_vc_obj):    RGBASMFLAGS += -D _CRYSTAL11 -D _CRYSTAL11_VC
