@@ -24,7 +24,105 @@ CopyCurrencyString: ; I know this is ugly, I copied and pasted this function fro
 	inc de
 	jr .loop
 
+
+
 String_Currency_Cents: ; Note that this is unoptimized, as the string "Is this OK?@" is repeted.
 	db   " centavos";"えん"
 	next "Quer continuar?@";"かかります　よろしい　ですか？@"
+	
+String_Currency_Lek: ; Note that this is unoptimized, as the string "Is this OK?@" is repeted.
+	db   " lek";"えん"
+	next "Is this OK?@";"かかります　よろしい　ですか？@"	
+	
+String_Currency_Fening:
+	db   " fening";"えん"
+	next "Is this OK?@";"かかります　よろしい　ですか？@"	
+
+String_Currency_Stotinki:
+	db   " st.";"えん"
+	next "Is this OK?@";"かかります　よろしい　ですか？@"	
+	
+String_Currency_Copecks:
+	db   " copecks";"えん"
+	next "Is this OK?@";"かかります　よろしい　ですか？@"	
+	
+String_Currency_Rappen:
+	db   " rappen";"えん"
+	next "Is this OK?@";"かかります　よろしい　ですか？@"	
+
+String_Currency_Crowns:
+	db   " crowns";"えん"
+	next "Is this OK?@";"かかります　よろしい　ですか？@"	
+	
+String_Currency_Ore:
+	db   " öre";"えん"
+	next "Is this OK?@";"かかります　よろしい　ですか？@"	
+	
+String_Currency_Krooni:
+	db   " krooni";"えん"
+	next "Is this OK?@";"かかります　よろしい　ですか？@"	
+	
+String_Currency_Kronur:
+	db   " kronur";"えん"
+	next "Is this OK?@";"かかります　よろしい　ですか？@"	
+
+String_Currency_Pence:
+	db   " pence";"えん"
+	next "Is this OK?@";"かかります　よろしい　ですか？@"
+	
+String_Currency_Lp:
+	db   " lp";"えん"
+	next "Is this OK?@";"かかります　よろしい　ですか？@"	
+	
+String_Currency_Filler:
+	db   " fillér";"えん"
+	next "Is this OK?@";"かかります　よろしい　ですか？@"
+
+String_Currency_Centai:
+	db   " centai";"えん"
+	next "Is this OK?@";"かかります　よろしい　ですか？@"	
+	
+String_Currency_Santimi:
+	db   " santimi";"えん"
+	next "Is this OK?@";"かかります　よろしい　ですか？@"	
+	
+String_Currency_Lei:
+	db   " lei";"えん"
+	next "Is this OK?@";"かかります　よろしい　ですか？@"	
+	
+String_Currency_Liri:
+	db   " liri";"えん"
+	next "Is this OK?@";"かかります　よろしい　ですか？@"	
+	
+String_Currency_Groszy:
+	db   " groszy";"えん"
+	next "Is this OK?@";"かかります　よろしい　ですか？@"	
+	
+String_Currency_Bani:
+	db   " bani";"えん"
+	next "Is this OK?@";"かかります　よろしい　ですか？@"		
+
+String_Currency_Dinari:
+	db   " dinari";"えん"
+	next "Is this OK?@";"かかります　よろしい　ですか？@"
+	
+String_Currency_Rubles:
+	db   " rubles";"えん"
+	next "Is this OK?@";"かかります　よろしい　ですか？@"
+	
+String_Currency_Kronor:
+	db   " kronor";"えん"
+	next "Is this OK?@";"かかります　よろしい　ですか？@"	
+	
+String_Currency_Tolars:
+	db   " tolars";"えん"
+	next "Is this OK?@";"かかります　よろしい　ですか？@"	
+	
+String_Currency_Haliers:
+	db   " haliers";"えん"
+	next "Is this OK?@";"かかります　よろしい　ですか？@"
+
+String_Currency_Kopikyk:
+	db   " kopikyk";"えん"
+	next "Is this OK?@";"かかります　よろしい　ですか？@"		
 	
