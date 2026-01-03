@@ -163,12 +163,12 @@ CeladonGameCornerPokefanMText:
 	done
 
 CeladonGameCornerTeacherText:
-if DEF(_CRYSTAL_AU)
+IF DEF(_CRYSTAL_AU)
 	text "The weather"
 	line "outside is very"
 	cont "nice."
 	done
-else
+ELSE
 	text "It's this machine"
 	line "I want."
 
@@ -178,15 +178,15 @@ else
 	para "should pay out"
 	line "today."
 	done
-endc
+ENDC
 
 CeladonGameCornerFishingGuruText:
-if DEF(_CRYSTAL_AU)
+IF DEF(_CRYSTAL_AU)
 	text "This machine looks"
 	line "the same as the"
 	cont "others."
 	done
-else
+ELSE
 	text "I think this slot"
 	line "machine will pay"
 	cont "out…"
@@ -194,10 +194,10 @@ else
 	para "The odds vary"
 	line "among machines."
 	done
-endc
+ENDC
 
 CeladonGameCornerFisherText1:
-if DEF(_CRYSTAL_AU)
+IF DEF(_CRYSTAL_AU)
 	text "Whoa!"
 
 	para "What? You want to"
@@ -206,7 +206,7 @@ if DEF(_CRYSTAL_AU)
 	para "Here, take my"
 	line "coins."
 	done
-else
+ELSE
 	text "Gahahaha!"
 
 	para "The coins just"
@@ -218,7 +218,7 @@ else
 	para "I'll share my luck"
 	line "with you!"
 	done
-endc
+ENDC
 
 CeladonGameCornerFisherText2:
 	text "Gahahaha!"
@@ -240,11 +240,11 @@ CeladonGameCornerFisherNoCoinCaseText:
 	done
 
 CeladonGameCornerFisherFullCoinCaseText:
-if DEF(_CRYSTAL_AU)
+IF DEF(_CRYSTAL_AU)
 	text "Your COIN CASE is"
 	line "full."
 	done
-else
+ELSE
 	text "Hey, your COIN"
 	line "CASE is full, kid."
 
@@ -252,18 +252,18 @@ else
 	line "a winning streak"
 	cont "too."
 	done
-endc
+ENDC
 
 CeladonGymGuideText:
 	text "Hey! CHAMP in"
 	line "making!"
 
 	para "Are you playing"
-if DEF(_CRYSTAL_AU)
+IF DEF(_CRYSTAL_AU)
 	line "too?"
-else
+ELSE
 	line "the slots too?"
-endc
+ENDC
 
 	para "I'm trying to get"
 	line "enough coins for a"
@@ -274,19 +274,19 @@ endc
 	done
 
 CeladonGameCornerGrampsText:
-if DEF(_CRYSTAL_AU)
+IF DEF(_CRYSTAL_AU)
 	text "Is there any"
 	line "difference between"
 	cont "these lines?"
 	done
-else
+ELSE
 	text "Hmmm… The odds are"
 	line "surely better for"
 
 	para "PIKACHU's line,"
 	line "but… What to do?"
 	done
-endc
+ENDC
 
 CeladonGameCornerPoster1Text:
 	text "Hey!"

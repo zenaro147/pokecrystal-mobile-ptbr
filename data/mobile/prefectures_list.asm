@@ -1,4 +1,4 @@
-if DEF(_CRYSTAL_AU)
+IF DEF(_CRYSTAL_AU)
 Prefectures: ; Quick and dirty solution for the margin offset. In this list, strings must be left-aligned.
 	db "AU-ACT@"	; Australian Capital Territory
 	db "AU-NSW@"	; New South Wales
@@ -26,7 +26,7 @@ Prefectures: ; Quick and dirty solution for the margin offset. In this list, str
 	db "NZ-WKO@"      ; Waikato
 LastPrefecture: db "NZ-WTC@"      ; West Coast
 
-elif DEF(_CRYSTAL_EU)
+ELIF DEF(_CRYSTAL_EU)
 Prefectures:
 	db "EU-AD@"     ; Andorra
 	db "EU-AL@"     ; Albania
@@ -68,7 +68,7 @@ Prefectures:
 	db "EU-SK@"     ; Slovakia
 	db "EU-SM@"     ; San Marino
 LastPrefecture: db "EU-UA@"     ; Ukraine
-else
+ELSE
 Prefectures:
 	db	"US-AL@"  	;Alabama
 	db	"US-AK@"  	;Alaska
@@ -133,4 +133,4 @@ Prefectures:
 	db	"CA-QC@"	; Quebec
 	db	"CA-SK@"	; Saskatchewan
 LastPrefecture: db	"CA-YT@"	; Yukon
-endc
+ENDC

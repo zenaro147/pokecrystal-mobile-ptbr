@@ -469,16 +469,16 @@ BuenaPhoneFavoriteSlotMachineAnswerText:
 	para "CORNER tomorrow."
 	line "It's been a while."
 
-if DEF(_CRYSTAL_AU)
+IF DEF(_CRYSTAL_AU)
 	para "Some machines pays"
 	line "out a lot."
-else
+ELSE
 	para "You see, I have my"
 	line "favorite machine…"
 
 	para "It pays out a lot,"
 	line "I kid you not!"
-endc
+ENDC
 
 	para "Huh? Nuh-uh, it's"
 	line "my secret!"

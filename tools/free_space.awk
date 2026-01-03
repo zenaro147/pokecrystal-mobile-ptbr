@@ -51,11 +51,11 @@ rom_bank && toupper($0) ~ /^[ \t]*EMPTY$/ {
 	register_bank(16384)
 }
 rom_bank && toupper($0) ~ /^[ \t]*SLACK:[ \t]/ {
-    # Old (rgbds <=0.6.0) end-of-bank free space
+    # Old (rgbds <=1.0.1) end-of-bank free space
     register_bank_str($2)
 }
 rom_bank && toupper($0) ~ /^[ \t]*TOTAL EMPTY:[ \t]/ {
-    # New (rgbds >=0.6.1) total free space
+    # New (rgbds >=1.0.1) total free space
     register_bank_str($3)
 }
 

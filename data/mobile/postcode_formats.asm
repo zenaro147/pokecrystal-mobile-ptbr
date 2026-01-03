@@ -1,4 +1,4 @@
-if DEF(_CRYSTAL_AU) ; AU build
+IF DEF(_CRYSTAL_AU) ; AU build
 Zipcode_CharPool_Formats:
 	dw Zipcode_CharPools_Format0
 ;________________________________
@@ -15,7 +15,7 @@ Zipcode_CharPools_Format0:         ; 0-9   0-9   0-9   0-9
 
 
 
-elif DEF(_CRYSTAL_EU) ; EU build
+ELIF DEF(_CRYSTAL_EU) ; EU build
 Zipcode_CharPool_Formats:
 	dw Zipcode_CharPools_Format0
 	dw Zipcode_CharPools_Format1
@@ -129,7 +129,7 @@ Zipcode_CharPools_Format15:         ; 0-9   0-9   0-9         0-9   0-9
 	db CHARPOOL_0_TO_9
 
 
-else ; US build
+ELSE ; US build
 Zipcode_CharPool_Formats:
 	dw Zipcode_CharPools_Format0
 	dw Zipcode_CharPools_Format1
@@ -147,4 +147,4 @@ Zipcode_CharPools_Format0:          ; 0-9   0-9   0-9   0-9   0-9
 	db CHARPOOL_0_TO_9
 	db CHARPOOL_0_TO_9
 	db CHARPOOL_0_TO_9
-endc
+ENDC

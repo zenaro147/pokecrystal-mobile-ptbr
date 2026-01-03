@@ -14,9 +14,9 @@ TypeNames:
 	dw Steel
 	assert_table_length UNUSED_TYPES
 
-rept UNUSED_TYPES_END - UNUSED_TYPES - 1 ; discount CURSE_TYPE
+REPT UNUSED_TYPES_END - UNUSED_TYPES - 1 ; discount CURSE_TYPE
 	dw Normal
-endr
+ENDR
 	dw CurseType
 	assert_table_length UNUSED_TYPES_END
 

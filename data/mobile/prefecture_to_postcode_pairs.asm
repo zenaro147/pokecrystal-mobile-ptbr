@@ -1,4 +1,4 @@
-if DEF(_CRYSTAL_AU) ; AU build.
+IF DEF(_CRYSTAL_AU) ; AU build.
 PrefectureZipcodeFormat:
 	db 0 ; AU-NSW
 	db 0 ; AU-QLD
@@ -35,7 +35,7 @@ ZipcodeFormatLengths:
 
 
 
-elif DEF(_CRYSTAL_EU) ; EU build.
+ELIF DEF(_CRYSTAL_EU) ; EU build.
 PrefectureZipcodeFormat:
 	db 0  ; EU-AD
 	db 2  ; EU-AL
@@ -102,7 +102,7 @@ ZipcodeFormatLengths:
 
 
 
-else ; US build.
+ELSE ; US build.
 PrefectureZipcodeFormat:
 	db 0 ; US-AL
 	db 0 ; US-AK
@@ -171,4 +171,4 @@ PrefectureZipcodeFormat:
 ZipcodeFormatLengths:
 	db 5 ;  0:   0-9   0-9   0-9   0-9   0-9
 	db 7 ;  1:   A-Z   0-9   A-Z         0-9   A-Z   0-9
-endc
+ENDC

@@ -80,7 +80,7 @@ INCLUDE "audio/music/celadoncity.asm"
 
 INCLUDE "audio/music/wildpokemonvictory.asm"
 INCLUDE "audio/music/successfulcapture.asm"
-assert BANK(Music_WildPokemonVictory) == BANK(Music_SuccessfulCapture)
+ASSERT BANK(Music_WildPokemonVictory) == BANK(Music_SuccessfulCapture)
 
 INCLUDE "audio/music/gymleadervictory.asm"
 INCLUDE "audio/music/mtmoonsquare.asm"
@@ -91,7 +91,7 @@ INCLUDE "audio/music/profoak.asm"
 
 INCLUDE "audio/music/lookrival.asm"
 INCLUDE "audio/music/aftertherivalfight.asm"
-assert BANK(Music_LookRival) == BANK(Music_AfterTheRivalFight)
+ASSERT BANK(Music_LookRival) == BANK(Music_AfterTheRivalFight)
 
 INCLUDE "audio/music/surf.asm"
 INCLUDE "audio/music/nationalpark.asm"
@@ -101,7 +101,7 @@ INCLUDE "audio/music/unioncave.asm"
 
 INCLUDE "audio/music/johtowildbattle.asm"
 INCLUDE "audio/music/johtowildbattlenight.asm"
-assert BANK(Music_JohtoWildBattle) == BANK(Music_JohtoWildBattleNight)
+ASSERT BANK(Music_JohtoWildBattle) == BANK(Music_JohtoWildBattleNight)
 
 INCLUDE "audio/music/johtotrainerbattle.asm"
 INCLUDE "audio/music/lookyoungster.asm"
@@ -118,7 +118,7 @@ INCLUDE "audio/music/lookhiker.asm"
 
 INCLUDE "audio/music/lookrocket.asm"
 INCLUDE "audio/music/rockettheme.asm"
-assert BANK(Music_LookRocket) == BANK(Music_RocketTheme)
+ASSERT BANK(Music_LookRocket) == BANK(Music_RocketTheme)
 
 INCLUDE "audio/music/mainmenu.asm"
 INCLUDE "audio/music/lookkimonogirl.asm"

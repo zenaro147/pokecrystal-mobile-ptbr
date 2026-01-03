@@ -89,11 +89,11 @@ CeladonCityPoliwrathText:
 	done
 
 CeladonCityTeacher1Text:
-if DEF(_CRYSTAL_AU)
+IF DEF(_CRYSTAL_AU)
 	text "I lost at the"
 	line "machines."
 	done
-else
+ELSE
 	text "I lost at the slot"
 	line "machines again…"
 
@@ -103,7 +103,7 @@ else
 	para "You should check"
 	line "them out too."
 	done
-endc
+ENDC
 
 CeladonCityGramps1Text:
 	text "GRIMER have been"
@@ -217,17 +217,17 @@ CeladonCityMansionSignText:
 	done
 
 CeladonCityGameCornerSignText:
-if DEF(_CRYSTAL_AU)
+IF DEF(_CRYSTAL_AU)
 	text "The Game Area for"
 	line "Grown-ups--CELADON"
 	cont "GAME CORNER"
 	done
-else
+ELSE
 	text "The Playground for"
 	line "Everybody--CELADON"
 	cont "GAME CORNER"
 	done
-endc
+ENDC
 
 CeladonCityTrainerTipsText:
 	text "TRAINER TIPS"
