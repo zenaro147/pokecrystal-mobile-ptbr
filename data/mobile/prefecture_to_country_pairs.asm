@@ -1,4 +1,4 @@
-IF DEF(_CRYSTAL_AU) ; AU build.
+if DEF(_CRYSTAL_AU) ; AU build.
 PrefectureToCountry:
 	db 0 ; AU-NSW
 	db 0 ; AU-QLD
@@ -32,7 +32,7 @@ PrefectureToCountry:
 
 
 
-ELIF DEF(_CRYSTAL_EU) ; EU build.
+elif DEF(_CRYSTAL_EU) ; EU build.
 PrefectureToCountry:
 	db  0 ; EU-AD
 	db  1 ; EU-AL
@@ -81,7 +81,7 @@ PrefectureToCountry:
 
 
 
-ELSE ; US build.
+else ; US build.
 PrefectureToCountry:
 	db 0 ; US-AL
 	db 0 ; US-AK
@@ -146,4 +146,4 @@ PrefectureToCountry:
 	db 1 ; CA-NT
 	db 1 ; CA-NU
 	db 1 ; CA-YT
-ENDC
+endc

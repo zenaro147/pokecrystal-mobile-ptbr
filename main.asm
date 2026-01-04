@@ -661,9 +661,9 @@ INCLUDE "engine/pokemon/european_mail.asm"
 
 SECTION "Debug Room", ROMX
 
-IF DEF(_DEBUG)
+if DEF(_DEBUG)
 INCLUDE "engine/debug/debug_room.asm"
-ENDC
+endc
 
 
 SECTION "Battle Tower Text", ROMX
@@ -700,8 +700,8 @@ SECTION "Stadium 2 Checksums", ROMX[$7DE0], BANK[$7F]
 ; Pokémon Stadium Gold and Silver was the third Stadium release for N64.)
 ; This SECTION reserves space for those checksums.
 ; If it is removed, also remove the "tools/stadium" command in the Makefile.
-IF DEF(_CRYSTAL_AU)
+if DEF(_CRYSTAL_AU)
 INCBIN "mobile/stadium/stadium2_au.bin"
-ELSE
+else
 INCBIN "mobile/stadium/stadium2.bin"
-ENDC
+endc

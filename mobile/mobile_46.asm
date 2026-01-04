@@ -2044,60 +2044,60 @@ Function118b9a:
 pushc
 setcharmap ascii
 
-IF DEF(_CRYSTAL_AU)
+if DEF(_CRYSTAL_AU)
 ExchangeDownloadURL:
 	db "http://gameboy.datacenter.ne.jp/cgb/download?name=/01/CGB-BXTU/exchange/index.txt", 0
-ELIF DEF(_CRYSTAL_EU)
+elif DEF(_CRYSTAL_EU)
 ExchangeDownloadURL:
 	db "http://gameboy.datacenter.ne.jp/cgb/download?name=/01/CGB-BXTP/exchange/index.txt", 0
-ELSE
+else
 ExchangeDownloadURL:
 	db "http://gameboy.datacenter.ne.jp/cgb/download?name=/01/CGB-BXTE/exchange/index.txt", 0
-ENDC
+endc
 	
-IF DEF(_CRYSTAL_AU)
+if DEF(_CRYSTAL_AU)
 BattleDownloadURL:
 	db "http://gameboy.datacenter.ne.jp/cgb/download?name=/01/CGB-BXTU/battle/index.txt", 0
-ELIF DEF(_CRYSTAL_EU)
+elif DEF(_CRYSTAL_EU)
 BattleDownloadURL:
 	db "http://gameboy.datacenter.ne.jp/cgb/download?name=/01/CGB-BXTP/battle/index.txt", 0
-ELSE
+else
 BattleDownloadURL:
 	db "http://gameboy.datacenter.ne.jp/cgb/download?name=/01/CGB-BXTE/battle/index.txt", 0
-ENDC
+endc
 
-IF DEF(_CRYSTAL_AU)
+if DEF(_CRYSTAL_AU)
 NewsDownloadURL:
 	db "http://gameboy.datacenter.ne.jp/cgb/download?name=/01/CGB-BXTU/news/index.txt", 0
-ELIF DEF(_CRYSTAL_EU)	
+elif DEF(_CRYSTAL_EU)	
 NewsDownloadURL:
 	db "http://gameboy.datacenter.ne.jp/cgb/download?name=/01/CGB-BXTP/news/index.txt", 0
-ELSE
+else
 NewsDownloadURL:
 	db "http://gameboy.datacenter.ne.jp/cgb/download?name=/01/CGB-BXTE/news/index.txt", 0
-ENDC
+endc
 
-IF DEF(_CRYSTAL_AU)
+if DEF(_CRYSTAL_AU)
 StadiumDownloadURL:
 	db "http://gameboy.datacenter.ne.jp/cgb/download?name=/01/CGB-BXTU/POKESTA/menu.cgb", 0
-ELIF DEF(_CRYSTAL_EU)	
+elif DEF(_CRYSTAL_EU)	
 StadiumDownloadURL:
 	db "http://gameboy.datacenter.ne.jp/cgb/download?name=/01/CGB-BXTP/POKESTA/menu.cgb", 0
-ELSE
+else
 StadiumDownloadURL:
 	db "http://gameboy.datacenter.ne.jp/cgb/download?name=/01/CGB-BXTE/POKESTA/menu.cgb", 0
-ENDC
+endc
 
-IF DEF(_CRYSTAL_AU)
+if DEF(_CRYSTAL_AU)
 OddEggDownloadURL:
 	db "http://gameboy.datacenter.ne.jp/cgb/download?name=/01/CGB-BXTU/tamago/index.txt", 0
-ELIF DEF(_CRYSTAL_EU)	
+elif DEF(_CRYSTAL_EU)	
 OddEggDownloadURL:
 	db "http://gameboy.datacenter.ne.jp/cgb/download?name=/01/CGB-BXTP/tamago/index.txt", 0
-ELSE
+else
 OddEggDownloadURL:
 	db "http://gameboy.datacenter.ne.jp/cgb/download?name=/01/CGB-BXTE/tamago/index.txt", 0
-ENDC	
+endc	
 
 popc
 
@@ -3271,9 +3271,9 @@ Function119471:
 	ld a, $10
 	cp b
 	jr z, .asm_119536
-REPT 4
+rept 4
 	inc hl
-ENDR
+endr
 	jr .asm_11957a
 .asm_119536
 	ld a, [hli]
@@ -4131,16 +4131,16 @@ Function119ac9:
 	ld [wBattleTowerRoomMenuJumptableIndex], a
 	ret
 	
-IF DEF(_CRYSTAL_AU)
+if DEF(_CRYSTAL_AU)
 XGameCode:
 INCBIN "data/mobile/x-game-code-aus.txt"
-ELIF DEF(_CRYSTAL_EU)
+elif DEF(_CRYSTAL_EU)
 XGameCode:
 INCBIN "data/mobile/x-game-code-eur.txt"
-ELSE
+else
 XGameCode:
 INCBIN "data/mobile/x-game-code.txt"
-ENDC
+endc
 
 XGameResult:
 INCBIN "data/mobile/x-game-result.txt"
@@ -5887,17 +5887,17 @@ Function11a88c:
 Unknown_11a89a:
 for x, 16
 	bcd x % 100, x / 100
-ENDR
+endr
 
 Unknown_11a8ba:
 for x, 0, 16**2, 16
 	bcd x % 100, x / 100
-ENDR
+endr
 
 Unknown_11a8da:
 for x, 0, 16**3, 16**2
 	bcd x % 100, x / 100
-ENDR
+endr
 
 BattleTowerRoomMenu_WriteMessage:
 	jumptable .Jumptable, wc31a

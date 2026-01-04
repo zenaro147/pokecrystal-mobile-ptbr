@@ -28,7 +28,7 @@ LinkCommunications:
 	call SetTradeRoomBGPals
 	call WaitBGMap2
 	ld hl, wLinkByteTimeout
-	ASSERT LOW(SERIAL_LINK_BYTE_TIMEOUT) == 0
+	assert LOW(SERIAL_LINK_BYTE_TIMEOUT) == 0
 	xor a ; LOW(SERIAL_LINK_BYTE_TIMEOUT)
 	ld [hli], a
 	ld [hl], HIGH(SERIAL_LINK_BYTE_TIMEOUT)
@@ -68,11 +68,11 @@ Gen2ToGen1LinkComms:
 	ld de, MUSIC_NONE
 	call PlayMusic
 	vc_patch Wireless_net_delay_5
-IF DEF(_CRYSTAL11_VC)
+if DEF(_CRYSTAL11_VC)
 	ld c, 26
-ELSE
+else
 	ld c, 3
-ENDC
+endc
 	vc_patch_end
 	call DelayFrames
 	xor a
@@ -234,11 +234,11 @@ Gen2ToGen2LinkComms:
 	ld de, MUSIC_NONE
 	call PlayMusic
 	vc_patch Wireless_net_delay_8
-IF DEF(_CRYSTAL11_VC)
+if DEF(_CRYSTAL11_VC)
 	ld c, 26
-ELSE
+else
 	ld c, 3
-ENDC
+endc
 	vc_patch_end
 	call DelayFrames
 	xor a
@@ -621,7 +621,7 @@ FixDataForLinkTransfer:
 	jr nz, .preamble_loop
 
 ; Initialize random seed, making sure special bytes are omitted
-	ASSERT wLinkBattleRNPreamble + SERIAL_RN_PREAMBLE_LENGTH == wLinkBattleRNs
+	assert wLinkBattleRNPreamble + SERIAL_RN_PREAMBLE_LENGTH == wLinkBattleRNs
 	ld b, SERIAL_RNS_LENGTH
 .rn_loop
 	call Random
@@ -634,9 +634,9 @@ FixDataForLinkTransfer:
 ; Clear the patch list
 	ld hl, wPlayerPatchLists
 	ld a, SERIAL_PREAMBLE_BYTE
-REPT SERIAL_PATCH_PREAMBLE_LENGTH
+rept SERIAL_PATCH_PREAMBLE_LENGTH
 	ld [hli], a
-ENDR
+endr
 	ld b, SERIAL_PATCH_LIST_LENGTH
 	xor a
 .clear_loop
@@ -2199,11 +2199,11 @@ GetIncompatibleMonName:
 
 EnterTimeCapsule:
 	vc_patch Wireless_net_delay_6
-IF DEF(_CRYSTAL11_VC)
+if DEF(_CRYSTAL11_VC)
 	ld c, 26
-ELSE
+else
 	ld c, 10
-ENDC
+endc
 	vc_patch_end
 	call DelayFrames
 	ld a, $4
@@ -2428,11 +2428,11 @@ CheckLinkTimeout_Gen2:
 	ld [wPlayerLinkAction], a
 	ld hl, wLinkTimeoutFrames
 	vc_patch Wireless_net_delay_9
-IF DEF(_CRYSTAL11_VC)
+if DEF(_CRYSTAL11_VC)
 	ld a, $3
-ELSE
+else
 	ld a, 1
-ENDC
+endc
 	vc_patch_end
 	ld [hli], a
 	ld [hl], 50
@@ -2495,11 +2495,11 @@ Link_CheckCommunicationError:
 
 .AcknowledgeSerial:
 	vc_patch Wireless_net_delay_7
-IF DEF(_CRYSTAL11_VC)
+if DEF(_CRYSTAL11_VC)
 	ld b, 26
-ELSE
+else
 	ld b, 10
-ENDC
+endc
 	vc_patch_end
 .loop
 	call DelayFrame

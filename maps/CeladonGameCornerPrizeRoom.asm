@@ -214,11 +214,11 @@ CeladonGameCornerPrizeRoomGentlemanText:
 	done
 
 CeladonGameCornerPrizeRoomPharmacistText:
-IF DEF(_CRYSTAL_AU)
+if DEF(_CRYSTAL_AU)
 	text "I don't want to"
 	line "lose my coins."
 	done
-ELSE
+else
 	text "Whew…"
 
 	para "I've got to stay"
@@ -228,7 +228,7 @@ ELSE
 	line "cool, or I'll lose"
 	cont "all my money…"
 	done
-ENDC
+endc
 
 CeladonPrizeRoom_PrizeVendorIntroText:
 	text "Welcome!"

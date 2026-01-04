@@ -8,7 +8,7 @@ WriteCurrencyName::
 ; Input: none. wPrefecture should be set to the prefecture of the user.
 ; Output: HL = the address of the string to use for the currency.
 DetermineCurrencyName:
-IF DEF(_CRYSTAL_EU) 
+if DEF(_CRYSTAL_EU) 
 	; EU region.
 	ld a, [wPrefecture] ; Loads the Prefectures index (starts at 0) selected by the player. The Prefectures list is stored into mobile_12.asm
 	dec a ; Beware: it the value is 0, dec will underflow and default to the default value
@@ -116,10 +116,10 @@ IF DEF(_CRYSTAL_EU)
 	ret z		
 
 	ld hl, String_Currency_Cents ; Default case. Anything that uses Cents doesn't need to be added into this check list.
-ELSE
+else
 	; AU and US regions. Cents in all cases.
 	ld hl, String_Currency_Cents
-ENDC
+endc
 	ret
 
 ; Input: HL = the address to copy from.

@@ -364,29 +364,29 @@ GoldenrodGameCornerPrizeVendorNoCoinCaseText:
 	done
 
 GoldenrodGameCornerPharmacistText:
-IF DEF(_CRYSTAL_AU)
+if DEF(_CRYSTAL_AU)
 	text "This machine looks"
 	line "the same as the"
 	cont "others."
 	done
-ELSE
+else
 	text "I always play this"
 	line "slot machine. It"
 
 	para "pays out more than"
 	line "others, I think."
 	done
-ENDC
+endc
 
 GoldenrodGameCornerPokefanM1Text:
-IF DEF(_CRYSTAL_AU)
+if DEF(_CRYSTAL_AU)
 	text "These machines"
 	line "seem different"
 
 	para "from the ones at"
 	line "CELADON CITY!"
 	done
-ELSE
+else
 	text "I just love this"
 	line "new slot machine."
 
@@ -394,28 +394,28 @@ ELSE
 	line "challenge than the"
 	cont "ones in CELADON."
 	done
-ENDC
+endc
 
 GoldenrodGameCornerCooltrainerMText:
-IF DEF(_CRYSTAL_AU)
+if DEF(_CRYSTAL_AU)
 	text "Nothing is certain"
 	line "in this area."
 	done
-ELSE
+else
 	text "Life is a gamble."
 	line "I'm going to flip"
 	cont "cards till I drop!"
 	done
-ENDC
+endc
 
 GoldenrodGameCornerPokefanFText:
 	text "Card flip…"
 
-IF DEF(_CRYSTAL_AU)
+if DEF(_CRYSTAL_AU)
 	para "Different from the"
 	line "other machines."
 	done
-ELSE
+else
 	para "I prefer it over"
 	line "the slots because"
 
@@ -425,7 +425,7 @@ ELSE
 	para "But the payout is"
 	line "much lower."
 	done
-ENDC
+endc
 
 GoldenrodGameCornerCooltrainerFText:
 	text "I won't quit until"
@@ -444,12 +444,12 @@ GoldenrodGameCornerGentlemanText:
 	done
 
 GoldenrodGameCornerPokefanM2Text:
-IF DEF(_CRYSTAL_AU)
+if DEF(_CRYSTAL_AU)
 	text "COIN CASE? I threw"
 	line "it away in the"
 	cont "UNDERGROUND."
 	done
-ELSE
+else
 	text "I couldn't win at"
 	line "the slots, and I"
 
@@ -462,7 +462,7 @@ ELSE
 	para "COIN CASE in the"
 	line "UNDERGROUND."
 	done
-ENDC
+endc
 
 MoveTutorInsideText:
 	text "Wahahah! The coins"
