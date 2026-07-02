@@ -682,6 +682,7 @@ Function17d370:
 	ld de, vTiles2 tile $60
 	ld bc, 1 tiles
 	call CopyBytes
+	call LoadNewsFeetInchesGFX
 	call EnableLCD
 	call Function17d60b
 	ld a, $0
@@ -725,6 +726,7 @@ Function17d405:
 	call CopyBytes
 	xor a
 	ldh [rVBK], a
+	call LoadNewsFeetInchesGFX
 	call EnableLCD
 	ldh a, [rSVBK]
 	push af
@@ -2924,6 +2926,7 @@ Function17e2a7:
 	ld hl, vTiles2 tile $60
 	lb bc, BANK(PostalMarkGFX), 1
 	call Get2bpp
+	call LoadNewsFeetInchesGFX
 	ld a, [wMobileErrorCodeBuffer]
 	and a
 	jr z, .asm_17e2d8
@@ -3582,6 +3585,26 @@ INCBIN "gfx/mobile/pokemon_news.2bpp"
 
 PostalMarkGFX:
 INCBIN "gfx/font/postal_mark.2bpp"
+
+LoadNewsFeetInchesGFX:
+	xor a
+	ldh [rVBK], a
+	ld de, FeetInchesGFX
+	ld hl, vTiles2 tile $6e
+	lb bc, BANK(FeetInchesGFX), 2
+	call Get2bpp
+	ld a, $1
+	ldh [rVBK], a
+	ld de, FeetInchesGFX
+	ld hl, vTiles2 tile $6e
+	lb bc, BANK(FeetInchesGFX), 2
+	call Get2bpp
+	xor a
+	ldh [rVBK], a
+	ret
+
+FeetInchesGFX:
+INCBIN "gfx/font/feet_inches.2bpp"
 
 PokemonNewsTileAttrmap:
 INCBIN "gfx/mobile/pokemon_news.bin"
@@ -4375,6 +4398,7 @@ Function17f44f:
 	ld h, a
 	ld de, wc608
 	ld a, [wcd57]
+	and $f
 	ld c, a
 	ld b, 0
 	call CopyBytes
