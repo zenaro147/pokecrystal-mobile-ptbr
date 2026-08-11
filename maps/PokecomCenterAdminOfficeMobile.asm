@@ -97,7 +97,7 @@ PokecomCenterAdminOfficeMobileComputer2:
 .MenuData:
 	db STATICMENU_CURSOR ; flags
 	db 3 ; items
-	db "PHONE USE@" ; Use phone
+	db "USE PHONE@" ; Use phone
 	db "NO SERVICE@" ; Don't use phone
 	db "CANCEL@" ; QUIT
 

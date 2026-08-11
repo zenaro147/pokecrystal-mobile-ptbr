@@ -584,9 +584,9 @@ ClearGSBallFlag:
 	xor a
 	call ByteFill
 	ld hl, sTrainerRankingShortestMagikarp
-	ld a, $03
+	ld a, $3 ; 3 feet
 	ld [hl+], a
-	ld [hl], $e8
+	ld [hl], $6 ; 6 inches
 	call UpdateTrainerRankingsChecksum
 	call CloseSRAM
 	ret
@@ -714,6 +714,13 @@ endr
 .simple_divide_done
 	ld b, a
 	ldh a, [hPrintNumBuffer + 8]
+	and a
+	jr nz, .simple_divide_has_digit
+	ld a, c
+	and a
+	call nz, .PrintMoneyPrefix
+.simple_divide_has_digit
+	ldh a, [hPrintNumBuffer + 8]
 	or c
 	ldh [hPrintNumBuffer + 8], a
 	jr nz, .create_digit
@@ -726,6 +733,7 @@ endr
 	ld [hl], a
 
 .done
+	call .PrintMoneyPrefix
 	call .Function1062ff
 	ld a, "0"
 	add b
@@ -794,6 +802,13 @@ endr
 
 .asm_1062eb
 	ldh a, [hPrintNumBuffer + 8]
+	and a
+	jr nz, .higher_digit_has_digit
+	ld a, c
+	and a
+	call nz, .PrintMoneyPrefix
+.higher_digit_has_digit
+	ldh a, [hPrintNumBuffer + 8]
 	or c
 	jr z, .LoadMinusTenIfNegative
 	ld a, -10
@@ -808,6 +823,19 @@ endr
 	ret z
 
 	ld [hl], -10
+	ret
+
+.PrintMoneyPrefix:
+	ldh a, [hPrintNumBuffer + 8]
+	and a
+	ret nz
+	ldh a, [hPrintNumBuffer + 9]
+	bit 5, a
+	ret z
+	push hl
+	dec hl
+	ld [hl], $f0
+	pop hl
 	ret
 
 .Function1062ff:
